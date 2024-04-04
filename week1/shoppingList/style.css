@@ -47,8 +47,13 @@ header {
   align-items: center;
   background-color: var(--deepBlue);
   color: white;
-  padding: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   z-index: 10;
+}
+header > * {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 nav {
@@ -96,8 +101,8 @@ footer {
 }
 
 #section-slot {
-  width: 70%;
-  padding-left: 10rem;
+  width: 90%;
+  margin-left: 10rem;
   padding-top: 2rem;
 }
 #item-frame {
@@ -157,16 +162,16 @@ footer {
 }
 
 @media screen and (max-width: 900px) {
+  #item-frame {
+    width: 40%;
+  }
   .wish-img {
     width: 100%;
-  }
-  #item-frame {
-    width: 44%;
   }
 }
 @media screen and (max-width: 768px) {
   #item-frame {
-    width: 100%;
+    width: 70%;
   }
   .wish-img {
     width: 100%;

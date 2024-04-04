@@ -75,7 +75,7 @@ footer {
 }
 #banner-container {
   display: flex;
-  width: 100%;
+  width: 60rem;
   overflow: hidden;
   margin-top: 3rem;
   margin-left: 2rem;
@@ -87,7 +87,7 @@ footer {
   animation: loop 10s linear infinite;
 }
 .banner > img {
-  width: fit-content;
+  width: 5rem;
   height: 5rem;
 }
 

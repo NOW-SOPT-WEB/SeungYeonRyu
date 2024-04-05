@@ -65,6 +65,7 @@ nav {
   color: white;
   padding-top: 3rem;
   padding-bottom: 3rem;
+  z-index: 10;
 }
 
 nav > ul {

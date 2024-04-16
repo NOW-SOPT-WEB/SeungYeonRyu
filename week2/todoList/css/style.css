@@ -1,4 +1,3 @@
-@import url("../css/reset.css");
 @import url("https://fonts.googleapis.com/css?family=Bagel+Fat+One");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 body {
@@ -102,4 +101,4 @@ section {
   100% {
     transform: rotate(0deg);
   }
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */

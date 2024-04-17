@@ -1,4 +1,4 @@
-import { shoppingItems } from "./data.js";
+import { category, shoppingItems } from "./data.js";
 
 /** 로고 버튼 */
 const logoCatBtn = document.querySelector("#homeIcon");
@@ -9,11 +9,13 @@ logoCatBtn.addEventListener("click", () => {
 });
 
 /** 아이템 렌더링 */
-const showShoppingList = () => {
+const showShoppingList = (items) => {
   const sectionSlot = document.querySelector(".item-slot");
   sectionSlot.innerHTML = "";
 
-  shoppingItems.map((item) => {
+  const itemList = items ? items : shoppingItems;
+
+  itemList.map((item) => {
     /** 상품 프레임 */
     const itemFrame = document.createElement("li");
     itemFrame.className = "item-frame flex flex-col items-center";
@@ -45,6 +47,40 @@ const showShoppingList = () => {
 
     sectionSlot.appendChild(itemFrame);
   });
+};
+
+/** 네비바 버튼 */
+const navBtn = document.querySelectorAll(".navBtn");
+navBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    filterItems(btn.id);
+  });
+});
+
+/** 아이템 필터링 */
+const filterItems = (btnId) => {
+  let filteredItems = shoppingItems;
+  switch (btnId) {
+    case "nav-snack":
+      filteredItems = shoppingItems.filter((item) => {
+        return item.category === category.SNACK;
+      });
+      break;
+    case "nav-coffee":
+      filteredItems = shoppingItems.filter((item) => {
+        return item.category === category.COFFEE;
+      });
+      break;
+    case "nav-plant":
+      filteredItems = shoppingItems.filter((item) => {
+        return item.category === category.PLANT;
+      });
+      break;
+    default:
+      filteredItems = shoppingItems;
+      break;
+  }
+  showShoppingList(filteredItems);
 };
 
 showShoppingList();

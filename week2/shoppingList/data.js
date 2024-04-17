@@ -1,4 +1,4 @@
-const category = {
+export const category = {
   SNACK: 0,
   COFFEE: 1,
   PLANT: 2,

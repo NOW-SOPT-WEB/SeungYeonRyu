@@ -46,7 +46,10 @@ const showCartList = () => {
     /** 상품금액 */
     const td3 = document.createElement("td");
     const cartItemPrice = document.createElement("p");
-    cartItemPrice.innerText = storedItem.price;
+    cartItemPrice.innerText = storedItem.price
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
     td3.appendChild(cartItemPrice);
 
     /** 카테고리 */

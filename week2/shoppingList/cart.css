@@ -54,11 +54,13 @@ body {
   background-color: orange;
   color: var(--deepBlue);
 }
-
+.purchase-modal button {
+  margin-top: 2rem;
+}
 /* 구매하기 모달 */
 .purchase-modal {
   width: 60%;
-  height: 30rem;
+  height: fit-content;
 
   position: absolute;
   display: flex;
@@ -66,6 +68,7 @@ body {
   left: 50%;
   top: 8rem;
   transform: translateX(-50%);
+  padding: 2rem;
 
   color: white;
   align-items: center;
@@ -76,12 +79,18 @@ body {
 .purchase-modal img {
   width: 32px;
   height: 32px;
-  padding: 1rem;
   align-self: flex-end;
+  padding: 1rem;
+  padding-top: 0;
 }
 
 .purchase-itemslot {
   display: flex;
   flex-wrap: wrap;
+  padding: 1rem;
   gap: 0.4rem;
+}
+.purchase-itemslot p {
+  width: 4rem;
+  padding: 0.2rem;
 }

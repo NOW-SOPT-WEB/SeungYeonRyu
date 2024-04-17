@@ -119,27 +119,6 @@ footer {
   gap: 0.8rem;
 }
 
-/* sidebar */
-.sidebar {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  width: 18rem;
-  height: 100%;
-  right: 0;
-  top: 0;
-  background-color: var(--deepBlue);
-
-  z-index: 2;
-}
-.sidebar img {
-  width: 32px;
-  height: 32px;
-  align-self: flex-end;
-
-  padding: 0.5rem;
-}
-
 /* common */
 .w-full {
   width: 100%;

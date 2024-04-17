@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./common/sidebar.css" />
     <title>웨비들의 쇼핑리스트</title>
   </head>
   <body>
     <header class="fixed w-full flex space-between">
       <img src="assets/icons/catIco.svg" alt="cat icon" id="homeIcon" />
       <h1>승연이의 위시리스트</h1>
-      <img src="assets/icons/hamburgerIco.svg" alt="hamburger" />
+      <img
+        src="assets/icons/hamburgerIco.svg"
+        alt="hamburger"
+        id="hamburgerIcon"
+      />
     </header>
 
     <main class="flex flex-col">
@@ -61,11 +66,11 @@
         </div>
 
         <!-- side bar -->
-        <div class="sidebar">
-          <img src="./assets/icons/close.svg" alt="close" />
+        <div class="sidebar invisible">
+          <img id="sidebar-close" src="./assets/icons/close.svg" alt="close" />
           <ul>
             <li class="navBtn">관심상품 보기</li>
-            <li class="navBtn">장바구니</li>
+            <li id="sidebar-cart" class="navBtn">장바구니</li>
             <li class="navBtn">관리자</li>
           </ul>
         </div>
@@ -79,5 +84,6 @@
       <p>솝트 웹 34기~ 짱~</p>
     </footer>
     <script src="./index.js" type="module"></script>
+    <script src="./common/sidebar.js" type="module"></script>
   </body>
 </html>

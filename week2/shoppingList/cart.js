@@ -12,6 +12,20 @@ homeBtn.addEventListener("click", () => {
   window.location.href = "./index.html";
 });
 
+/** 전체 체크버튼 */
+const mainCheck = document.querySelector(".entire-check");
+mainCheck.addEventListener("click", () => {
+  const checkedItems = document.querySelectorAll(".cartItemCheck");
+  // 전체 체크버튼 체크되어 있으면 전부 체크
+  mainCheck.checked
+    ? checkedItems.forEach((box) => {
+        box.checked = true;
+      })
+    : checkedItems.forEach((box) => {
+        box.checked = false;
+      });
+});
+
 /** 장바구니 목록 렌더링 */
 const showCartList = () => {
   const cartTable = document.querySelector(".cart-table-tbody");
@@ -27,6 +41,7 @@ const showCartList = () => {
     const cartItemCheck = document.createElement("input");
     cartItemCheck.type = "checkbox";
     cartItemCheck.name = "myItem";
+    cartItemCheck.className = "cartItemCheck";
     cartItemCheck.value = id;
     td0.appendChild(cartItemCheck);
 

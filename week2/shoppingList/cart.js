@@ -98,4 +98,21 @@ const removeCartItem = (itemId) => {
   showCartList();
 };
 
+/** 구매하기 모달 */
+const purChaseModal = document.querySelector(".purchase-modal");
+
+/** 구매하기 모달 닫기버튼 */
+const purchaseModalCloseBtn = document.querySelector(
+  ".purchase-modal-closeBtn"
+);
+purchaseModalCloseBtn.addEventListener("click", () => {
+  purChaseModal.classList.add("invisible");
+});
+
+/** 구매하기 모달 열기버튼 */
+const purchaseModalOpenBtn = document.querySelector("#openPurchaseModal");
+purchaseModalOpenBtn.addEventListener("click", () => {
+  purChaseModal.classList.remove("invisible");
+});
+
 showCartList();

@@ -44,8 +44,18 @@
     </section>
 
     <div class="cartBtnGroup">
-      <button>구매하기</button>
+      <button id="openPurchaseModal">구매하기</button>
       <button id="toHomeBtn">홈으로</button>
+    </div>
+
+    <div class="purchase-modal invisible">
+      <img
+        class="purchase-modal-closeBtn"
+        src="./assets/icons/close.svg"
+        alt="close"
+      />
+      <ul></ul>
+      <button>구매하기</button>
     </div>
 
     <script src="./cart.js" type="module"></script>

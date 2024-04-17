@@ -1,3 +1,7 @@
+html {
+  --deepBlue: #323242;
+}
+
 body {
   text-align: center;
 }
@@ -30,7 +34,10 @@ body {
   height: 4rem;
 }
 
-.cartBtnGroup button {
+.cartBtnGroup button,
+.purchase-modal button {
+  width: fit-content;
+  height: fit-content;
   padding: 0.5rem;
   padding-right: 0.8rem;
   padding-left: 0.8rem;
@@ -40,6 +47,34 @@ body {
   border: none;
 }
 .cartBtnGroup button:hover {
-  background-color: black;
+  background-color: var(--deepBlue);
   color: white;
+}
+.purchase-modal button:hover {
+  background-color: orange;
+  color: var(--deepBlue);
+}
+
+/* 구매하기 모달 */
+.purchase-modal {
+  width: 60%;
+  height: 30rem;
+
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  top: 8rem;
+  transform: translateX(-50%);
+
+  align-items: center;
+  border-radius: 16px;
+  background-color: var(--deepBlue);
+}
+
+.purchase-modal img {
+  width: 32px;
+  height: 32px;
+  padding: 1rem;
+  align-self: flex-end;
 }

@@ -16,14 +16,14 @@ body {
   );
   color: var(--deepBlue);
 }
-a {
+.navBtn {
   padding: 0.4rem;
   padding-left: 1rem;
   padding-right: 1rem;
   color: white;
   text-decoration: none;
 }
-a:hover {
+.navBtn:hover {
   color: var(--deepBlue);
   background-color: white;
 }

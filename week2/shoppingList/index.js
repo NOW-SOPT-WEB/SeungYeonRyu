@@ -19,6 +19,9 @@ const showShoppingList = (items) => {
     /** 상품 프레임 */
     const itemFrame = document.createElement("li");
     itemFrame.className = "item-frame flex flex-col items-center";
+    itemFrame.addEventListener("click", () => {
+      confirm("장바구니에 담기") ? addItemToCart(item) : null;
+    });
 
     /** 상품 이미지 */
     const itemImg = document.createElement("img");
@@ -83,4 +86,12 @@ const filterItems = (btnId) => {
   showShoppingList(filteredItems);
 };
 
+/** 선택한 아이템 장바구니에 담기 */
+const addItemToCart = (item) => {
+  if (localStorage.getItem(item.id)) {
+    console.log("이미 담긴 상품");
+  } else {
+    localStorage.setItem(item.id, JSON.stringify(item));
+  }
+};
 showShoppingList();

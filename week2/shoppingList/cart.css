@@ -8,6 +8,8 @@
   display: block;
   max-height: 20rem;
   overflow-y: scroll;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 .cart-table > thead,
 .cart-table > tbody > tr {

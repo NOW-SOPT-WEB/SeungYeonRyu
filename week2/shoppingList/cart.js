@@ -9,10 +9,10 @@ logoCatBtn.addEventListener("click", () => {
 /** 장바구니 목록 렌더링 */
 const showCartList = () => {
   const cartTable = document.querySelector(".cart-table-tbody");
+  cartTable.innerHTML = "";
   const storage = Object.keys(localStorage);
   storage.map((id) => {
     const storedItem = JSON.parse(localStorage.getItem(id));
-    console.log(storedItem);
     // 줄
     const tr = document.createElement("tr");
 
@@ -68,6 +68,9 @@ const showCartList = () => {
     const td5 = document.createElement("td");
     const cartItemBtn = document.createElement("button");
     cartItemBtn.innerText = "삭제";
+    cartItemBtn.addEventListener("click", () => {
+      removeCartItem(storedItem.id);
+    });
     td5.appendChild(cartItemBtn);
 
     tr.appendChild(td0);
@@ -78,6 +81,12 @@ const showCartList = () => {
     tr.appendChild(td5);
     cartTable.appendChild(tr);
   });
+};
+
+/** 장바구니 아이템 삭제하기 */
+const removeCartItem = (itemId) => {
+  localStorage.removeItem(itemId);
+  showCartList();
 };
 
 showCartList();

@@ -8,7 +8,7 @@ logoCatBtn.addEventListener("click", () => {
 
 /** 장바구니 목록 렌더링 */
 const showCartList = () => {
-  const cartTable = document.querySelector(".cart-table");
+  const cartTable = document.querySelector(".cart-table-tbody");
   const storage = Object.keys(localStorage);
   storage.map((id) => {
     const storedItem = JSON.parse(localStorage.getItem(id));

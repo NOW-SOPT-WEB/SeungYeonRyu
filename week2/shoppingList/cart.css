@@ -1,9 +1,25 @@
 .cart-table {
   margin-top: 4rem;
   background-color: white;
-  border: 1px solid black;
-  color: black;
+  border-radius: 1rem;
   text-align: center;
+}
+.cart-table-tbody {
+  display: block;
+  max-height: 20rem;
+  overflow-y: scroll;
+}
+.cart-table > thead,
+.cart-table > tbody > tr {
+  display: table;
+  width: 100%;
+}
+.cart-table td {
+  padding: 0.5rem;
+  width: 10rem;
+}
+.cart-table th {
+  padding: 1rem;
 }
 .cart-img {
   width: 4rem;

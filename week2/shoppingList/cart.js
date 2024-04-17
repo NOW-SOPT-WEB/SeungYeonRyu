@@ -188,6 +188,7 @@ purchaseBtn.addEventListener("click", () => {
   purchase();
   alert("구매완료");
   purChaseModal.classList.add("invisible");
+  mainCheck.checked = false;
   showCartList();
 });
 

@@ -1,8 +1,10 @@
+body {
+  text-align: center;
+}
 .cart-table {
   margin-top: 4rem;
   background-color: white;
   border-radius: 1rem;
-  text-align: center;
 }
 .cart-table-tbody {
   display: block;
@@ -26,4 +28,18 @@
 .cart-img {
   width: 4rem;
   height: 4rem;
+}
+
+.cartBtnGroup button {
+  padding: 0.5rem;
+  padding-right: 0.8rem;
+  padding-left: 0.8rem;
+  border-radius: 4px;
+  font-weight: 600;
+  background-color: white;
+  border: none;
+}
+.cartBtnGroup button:hover {
+  background-color: black;
+  color: white;
 }

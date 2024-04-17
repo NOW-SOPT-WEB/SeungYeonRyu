@@ -81,7 +81,7 @@ const filterItems = (btnId) => {
 /** 선택한 아이템 장바구니에 담기 */
 const addItemToCart = (item) => {
   if (localStorage.getItem(item.id)) {
-    console.log("이미 담긴 상품");
+    alert("이미 담긴 상품");
   } else {
     localStorage.setItem(item.id, JSON.stringify(item));
   }

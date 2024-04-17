@@ -10,7 +10,7 @@ sideBarCartBtn.addEventListener("click", () => {
 // 햄버거 버튼으로 사이드바 열기
 const hamburgerIcon = document.querySelector("#hamburgerIcon");
 hamburgerIcon.addEventListener("click", () => {
-  sideBar.classList.remove("invisible");
+  sideBar.classList.toggle("invisible");
 });
 
 // 사이드바 닫기

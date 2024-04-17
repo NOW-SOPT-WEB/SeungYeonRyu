@@ -1,5 +1,19 @@
 import { category, shoppingItems } from "./data.js";
 
+/** 배너 렌더링 */
+const showBanner = () => {
+  const bannerSections = document.querySelectorAll(".banner");
+  bannerSections.forEach((banner) => {
+    shoppingItems.map((items) => {
+      const bannerItem = document.createElement("img");
+      bannerItem.src = items.image;
+      bannerItem.alt = items.name;
+      banner.appendChild(bannerItem);
+    });
+  });
+};
+showBanner();
+
 /** 아이템 렌더링 */
 const showShoppingList = (items) => {
   const sectionSlot = document.querySelector(".item-slot");

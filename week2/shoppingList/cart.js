@@ -116,7 +116,7 @@ const purchaseModalOpenBtn = document.querySelector("#openPurchaseModal");
 purchaseModalOpenBtn.addEventListener("click", () => {
   purChaseModal.classList.remove("invisible");
   itemSlot.innerHTML = "";
-  getCheckedItem();
+  renderModalItems(getCheckedItem());
 });
 
 /** 체크된 아이템 추가할 리스트 */
@@ -126,6 +126,11 @@ const itemSlot = document.querySelector(".purchase-itemslot");
 const getCheckedItem = () => {
   const query = 'input[name="myItem"]:checked';
   const checkedItems = document.querySelectorAll(query);
+  return checkedItems;
+};
+
+/** 모달 내 상품 렌더 */
+const renderModalItems = (checkedItems) => {
   let totalPrice = 0;
 
   checkedItems.length === 0
@@ -162,4 +167,20 @@ const getCheckedItem = () => {
     "원";
 };
 
+/** 모달 내 구매하기 버튼 */
+const purchaseBtn = document.querySelector("#purchaseBtn");
+purchaseBtn.addEventListener("click", () => {
+  purchase();
+  alert("구매완료");
+  purChaseModal.classList.add("invisible");
+  showCartList();
+});
+
+/** 구매하기 */
+const purchase = () => {
+  const itemList = getCheckedItem();
+  itemList.forEach((item) => {
+    localStorage.removeItem(item.value);
+  });
+};
 showCartList();

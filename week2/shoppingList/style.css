@@ -79,7 +79,7 @@ footer {
 }
 .banner-container {
   display: flex;
-  width: 60rem;
+  width: 75%;
   overflow: hidden;
   margin-top: 3rem;
   margin-left: 2rem;

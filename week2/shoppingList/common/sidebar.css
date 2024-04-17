@@ -1,6 +1,6 @@
 /* sidebar */
 .sidebar {
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
   width: 18rem;

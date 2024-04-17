@@ -6,6 +6,12 @@ logoCatBtn.addEventListener("click", () => {
   window.location.href = "./index.html";
 });
 
+/** 홈으로 버튼 */
+const homeBtn = document.querySelector("#toHomeBtn");
+homeBtn.addEventListener("click", () => {
+  window.location.href = "./index.html";
+});
+
 /** 장바구니 목록 렌더링 */
 const showCartList = () => {
   const cartTable = document.querySelector(".cart-table-tbody");

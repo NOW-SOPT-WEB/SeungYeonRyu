@@ -26,6 +26,8 @@ const showCartList = () => {
     const td0 = document.createElement("td");
     const cartItemCheck = document.createElement("input");
     cartItemCheck.type = "checkbox";
+    cartItemCheck.name = "myItem";
+    cartItemCheck.value = id;
     td0.appendChild(cartItemCheck);
 
     /** 상품정보 사진 */
@@ -113,6 +115,51 @@ purchaseModalCloseBtn.addEventListener("click", () => {
 const purchaseModalOpenBtn = document.querySelector("#openPurchaseModal");
 purchaseModalOpenBtn.addEventListener("click", () => {
   purChaseModal.classList.remove("invisible");
+  itemSlot.innerHTML = "";
+  getCheckedItem();
 });
+
+/** 체크된 아이템 추가할 리스트 */
+const itemSlot = document.querySelector(".purchase-itemslot");
+
+/** 체크된 상품 목록 가져오기 */
+const getCheckedItem = () => {
+  const query = 'input[name="myItem"]:checked';
+  const checkedItems = document.querySelectorAll(query);
+  let totalPrice = 0;
+
+  checkedItems.length === 0
+    ? alert("상품을 선택해 주세요") & purChaseModal.classList.add("invisible")
+    : checkedItems.forEach((item) => {
+        const checkedItem = JSON.parse(localStorage.getItem(item.value));
+        const itemFrame = document.createElement("li");
+
+        /** 체크된 상품 이미지 */
+        const itemImg = document.createElement("img");
+        itemImg.src = checkedItem.image;
+        itemImg.alt = checkedItem.name;
+
+        /** 체크된 상품 이름 */
+        const itemName = document.createElement("p");
+        itemName.innerText = checkedItem.name;
+
+        /** 체크된 상품 가격 */
+        const cartItemPrice = document.createElement("p");
+        cartItemPrice.innerText = checkedItem.price;
+        totalPrice += checkedItem.price;
+
+        itemFrame.appendChild(itemImg);
+        itemFrame.appendChild(itemName);
+        itemFrame.appendChild(cartItemPrice);
+        itemSlot.appendChild(itemFrame);
+      });
+
+  /** 총 금액 합계 */
+  const totalPriceTxt = document.querySelector(".purchase-totalprice");
+  totalPriceTxt.innerText =
+    "총금액 : " +
+    totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
+    "원";
+};
 
 showCartList();

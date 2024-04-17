@@ -67,6 +67,7 @@ body {
   top: 8rem;
   transform: translateX(-50%);
 
+  color: white;
   align-items: center;
   border-radius: 16px;
   background-color: var(--deepBlue);
@@ -77,4 +78,10 @@ body {
   height: 32px;
   padding: 1rem;
   align-self: flex-end;
+}
+
+.purchase-itemslot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
 }

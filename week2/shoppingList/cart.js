@@ -31,7 +31,7 @@ const showCartList = () => {
   const cartTable = document.querySelector(".cart-table-tbody");
   cartTable.innerHTML = "";
   const storage = Object.keys(localStorage);
-  storage.map((id) => {
+  storage.forEach((id) => {
     const storedItem = JSON.parse(localStorage.getItem(id));
     // 줄
     const tr = document.createElement("tr");

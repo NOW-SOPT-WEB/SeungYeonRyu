@@ -4,7 +4,7 @@ import { category, shoppingItems } from "./data.js";
 const showBanner = () => {
   const bannerSections = document.querySelectorAll(".banner");
   bannerSections.forEach((banner) => {
-    shoppingItems.map((items) => {
+    shoppingItems.forEach((items) => {
       const bannerItem = document.createElement("img");
       bannerItem.src = items.image;
       bannerItem.alt = items.name;
@@ -21,7 +21,7 @@ const showShoppingList = (items) => {
 
   const itemList = items ? items : shoppingItems;
 
-  itemList.map((item) => {
+  itemList.forEach((item) => {
     /** 상품 프레임 */
     const itemFrame = document.createElement("li");
     itemFrame.className = "item-frame flex flex-col items-center";

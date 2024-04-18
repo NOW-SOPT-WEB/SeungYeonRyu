@@ -4,11 +4,16 @@ html {
 
 body {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .cart-table {
+  width: 90%;
+  margin-bottom: 1.5rem;
   margin-top: 4rem;
   background-color: white;
-  border-radius: 1rem;
+  border-radius: 0 0 1rem 1rem;
 }
 .cart-table-tbody {
   display: block;
@@ -28,6 +33,11 @@ body {
 }
 .cart-table th {
   padding: 1rem;
+  background-color: var(--deepBlue);
+  color: white;
+}
+.cart-table th:nth-child(2) {
+  width: 8rem;
 }
 .cart-img {
   width: 4rem;

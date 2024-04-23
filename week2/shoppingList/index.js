@@ -52,11 +52,7 @@ const showShoppingList = (items) => {
     const itemPrice = document.createElement("p");
     itemPrice.innerText = item.price;
 
-    itemFrame.appendChild(itemImg);
-    itemFrame.appendChild(heartIcon);
-    itemFrame.appendChild(itemName);
-    itemFrame.appendChild(itemPrice);
-
+    itemFrame.append(itemImg, heartIcon, itemName, itemPrice);
     sectionSlot.appendChild(itemFrame);
   });
 };

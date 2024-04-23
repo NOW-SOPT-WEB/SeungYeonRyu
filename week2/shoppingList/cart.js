@@ -1,16 +1,19 @@
 /** 로고 버튼 */
 const logoCatBtn = document.querySelector("#homeIcon");
 
+const homeAddr = "./index.html";
+
+/** 홈으로 이동 */
+const navigateHome = () => {
+  window.location.href = homeAddr;
+};
+
 // 누르면 메인 페이지로 이동
-logoCatBtn.addEventListener("click", () => {
-  window.location.href = "./index.html";
-});
+logoCatBtn.addEventListener("click", navigateHome);
 
 /** 홈으로 버튼 */
 const homeBtn = document.querySelector("#toHomeBtn");
-homeBtn.addEventListener("click", () => {
-  window.location.href = "./index.html";
-});
+homeBtn.addEventListener("click", navigateHome);
 
 /** 전체 체크버튼 */
 const mainCheck = document.querySelector(".entire-check");

@@ -3,15 +3,18 @@ import { category, shoppingItems } from "./data.js";
 /** 배너 렌더링 */
 const showBanner = () => {
   const bannerSections = document.querySelectorAll(".banner");
-  bannerSections.forEach((banner) => {
-    shoppingItems.forEach((items) => {
-      const bannerItem = document.createElement("img");
-      bannerItem.src = items.image;
-      bannerItem.alt = items.name;
-      banner.appendChild(bannerItem);
-    });
+  bannerSections.forEach((banner) => addItems(banner));
+};
+/** 배너 아이템 추가 */
+const addItems = (banner) => {
+  shoppingItems.forEach((items) => {
+    const bannerItem = document.createElement("img");
+    bannerItem.src = items.image;
+    bannerItem.alt = items.name;
+    banner.appendChild(bannerItem);
   });
 };
+
 showBanner();
 
 /** 아이템 렌더링 */

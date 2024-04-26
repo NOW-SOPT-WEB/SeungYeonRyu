@@ -23,86 +23,71 @@ mainCheck.addEventListener("click", () => {
   checkedItems.forEach((box) => (box.checked = mainCheck.checked));
 });
 
+/** 카테고리 인덱스로 이름 구하기 */
+const getCategoryName = (category) => {
+  switch (category) {
+    case 0:
+      return "과자";
+    case 1:
+      return "커피";
+    case 2:
+      return "식물";
+
+    default:
+      console.log("failed to get category name");
+      break;
+  }
+};
+
 /** 장바구니 목록 렌더링 */
 const showCartList = () => {
   const cartTable = document.querySelector(".cart-table-tbody");
   cartTable.innerHTML = "";
   const storage = Object.keys(localStorage);
-  storage.forEach((id) => {
-    const storedItem = JSON.parse(localStorage.getItem(id));
-    // 줄
-    const tr = document.createElement("tr");
+  const cartItems = storage
+    .map((id) => {
+      const storedItem = JSON.parse(localStorage.getItem(id));
+      const cartItemContent = `
+    <tr>
+          <td>
+            <input
+              type="checkbox"
+              name="myItem"
+              class="cartItemCheck"
+              value="${id}"
+            />
+          </td>
+          <td>
+            <img
+              src="${storedItem.image}"
+              alt="${storedItem.name}"
+              class="cart-img"
+            />
+          </td>
+          <td><p>${storedItem.name}</p></td>
+          <td>
+            <p>
+              ${storedItem.price
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </p>
+          </td>
+          <td><p>${getCategoryName(storedItem.category)}</p></td>
+          <td><button id="${
+            storedItem.id
+          }" type="button" class="cart-removeBtn">삭제</button></td>
+        </tr>
+    `;
+      return cartItemContent;
+    })
+    .join("");
 
-    /** 체크 */
-    const td0 = document.createElement("td");
-    const cartItemCheck = document.createElement("input");
-    cartItemCheck.type = "checkbox";
-    cartItemCheck.name = "myItem";
-    cartItemCheck.className = "cartItemCheck";
-    cartItemCheck.value = id;
-    td0.appendChild(cartItemCheck);
-
-    /** 상품정보 사진 */
-    const td1 = document.createElement("td");
-
-    const cartImg = document.createElement("img");
-    cartImg.src = storedItem.image;
-    cartImg.alt = storedItem.name;
-    cartImg.className = "cart-img";
-    td1.appendChild(cartImg);
-
-    /** 상품정보 이름 */
-    const td2 = document.createElement("td");
-    const cartItemName = document.createElement("p");
-    cartItemName.innerText = storedItem.name;
-    td2.appendChild(cartItemName);
-
-    /** 상품금액 */
-    const td3 = document.createElement("td");
-    const cartItemPrice = document.createElement("p");
-    cartItemPrice.innerText = storedItem.price
-      .toString()
-      .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-    td3.appendChild(cartItemPrice);
-
-    /** 카테고리 */
-    const td4 = document.createElement("td");
-    const cartItemCategory = document.createElement("p");
-    let categoryTxt = "";
-    switch (storedItem.category) {
-      case 0:
-        categoryTxt = "과자";
-        break;
-      case 1:
-        categoryTxt = "커피";
-        break;
-      case 2:
-        categoryTxt = "식물";
-        break;
-
-      default:
-        break;
-    }
-    cartItemCategory.innerText = categoryTxt;
-    td4.appendChild(cartItemCategory);
-
-    /** 비고 */
-    const td5 = document.createElement("td");
-    const cartItemBtn = document.createElement("button");
-    cartItemBtn.innerText = "삭제";
-    cartItemBtn.addEventListener("click", () => {
-      removeCartItem(storedItem.id);
+  cartTable.innerHTML = cartItems;
+  const cartItemBtn = document.querySelectorAll(".cart-removeBtn");
+  cartItemBtn.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      removeCartItem(btn.id);
     });
-    td5.appendChild(cartItemBtn);
-
-    tr.appendChild(td0);
-    tr.appendChild(td1);
-    tr.appendChild(td2);
-    tr.appendChild(td3);
-    tr.appendChild(td4);
-    tr.appendChild(td5);
-    cartTable.appendChild(tr);
   });
 };
 

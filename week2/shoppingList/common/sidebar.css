@@ -1,0 +1,26 @@
+/* sidebar */
+.sidebar {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 18rem;
+  height: 100%;
+  right: 0;
+  top: 0;
+  background-color: var(--deepBlue);
+  transition: 0.4s ease-in;
+  z-index: 2;
+}
+.sidebar img {
+  width: 32px;
+  height: 32px;
+
+  padding: 0.5rem;
+}
+.invisible {
+  display: none;
+}
+.slide-invisible {
+  transform: translateX(20rem);
+  transition: transform 300ms ease-out;
+}

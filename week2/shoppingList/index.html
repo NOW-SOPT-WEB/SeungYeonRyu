@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./common/sidebar.css" />
+    <title>웨비들의 쇼핑리스트</title>
+  </head>
+  <body>
+    <header class="fixed w-full flex space-between">
+      <img src="assets/icons/catIco.svg" alt="cat icon" id="homeIcon" />
+      <h1>승연이의 위시리스트</h1>
+      <img
+        src="assets/icons/hamburgerIco.svg"
+        alt="hamburger"
+        id="hamburgerIcon"
+      />
+    </header>
+
+    <main class="flex flex-col">
+      <nav class="fixed">
+        <ul class="flex flex-col text-center">
+          <li id="nav-all" class="navBtn">전체</li>
+          <li id="nav-snack" class="navBtn">과자</li>
+          <li id="nav-coffee" class="navBtn">커피</li>
+          <li id="nav-plant" class="navBtn">식물</li>
+        </ul>
+      </nav>
+      <div class="wrap">
+      <div class="section-slot" class="flex flex-col">
+        <div class="banner-container">
+          <div class="banner b1"></div>
+          <div class="banner b2"></div>
+        </div>
+
+        <!-- side bar -->
+        <div class="sidebar slide-invisible">
+          <img id="sidebar-close" src="./assets/icons/close.svg" alt="close" />
+          <ul>
+            <li class="navBtn">관심상품 보기</li>
+            <li id="sidebar-cart" class="navBtn">장바구니</li>
+            <li class="navBtn">관리자</li>
+          </ul>
+        </div>
+
+        <section id="section1">
+          <ul class="item-slot flex"></ul>
+        </section>
+      </div>
+    </main>
+    
+      <footer>
+        <p>솝트 웹 34기~ 짱~</p>
+      </footer>
+    </div>
+    <script src="./index.js" type="module"></script>
+    <script src="./common/sidebar.js" type="module"></script>
+  </body>
+</html>

@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
 import styled from "styled-components";
 import LevelBtnGroup from "../components/LevelBtnGroup";
 import CardGroup from "../components/CardGroup";
+import FinishModal from "../components/FinishModal";
 
 const CardGame = () => {
+  const [finishModalOpen, setFinishModalOpen] = useState(false);
+  const handleFinishModal = () => {
+    setFinishModalOpen(!finishModalOpen);
+  };
   return (
-    <CardPageContainer>
-      <Header score={3} maxScore={5} />
-      <LevelBtnGroup />
-      <CardGroup difficulty={10} />
-    </CardPageContainer>
+    <>
+      {finishModalOpen ? (
+        <FinishModal handleFinishModal={handleFinishModal} />
+      ) : null}
+
+      <CardPageContainer>
+        <Header score={3} maxScore={5} />
+        <LevelBtnGroup />
+        <CardGroup difficulty={10} />
+      </CardPageContainer>
+    </>
   );
 };
 

@@ -1,12 +1,15 @@
 import "./App.css";
+import { GlobalStyles } from "./GlobalStyles";
 import CardGame from "./pages/CardGame";
 import Theme from "./Theme";
-
 function App() {
   return (
-    <Theme>
-      <CardGame />
-    </Theme>
+    <>
+      <Theme>
+        <GlobalStyles />
+        <CardGame />
+      </Theme>
+    </>
   );
 }
 

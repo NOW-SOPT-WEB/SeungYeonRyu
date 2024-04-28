@@ -1,12 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 
-type Props = { text: string; color?: string };
+type Props = { text: string; color?: string; onclick: () => void };
 
 const CommonBtn = (props: Props) => {
-  return <BtnContainer color={props.color}>{props.text}</BtnContainer>;
+  return (
+    <BtnContainer color={props.color} onClick={props.onclick}>
+      {props.text}
+    </BtnContainer>
+  );
 };
 const BtnContainer = styled.button`
+  width: fit-content;
   height: fit-content;
   background-color: ${({ theme, color }) =>
     color ? color : theme.colors.pointGreen};

@@ -1,13 +1,13 @@
 import React from "react";
 import Header from "../components/Header";
 import styled from "styled-components";
+import LevelBtnGroup from "../components/LevelBtnGroup";
 
-type Props = {};
-
-const CardGame = (props: Props) => {
+const CardGame = () => {
   return (
     <CardPageContainer>
-      <Header />
+      <Header score={3} maxScore={5} />
+      <LevelBtnGroup />
     </CardPageContainer>
   );
 };
@@ -16,6 +16,10 @@ const CardGame = (props: Props) => {
 const CardPageContainer = styled.div`
   width: 100%;
   height: 100dvh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: ${({ theme }) => theme.colors.darkGrey};
 `;
 export default CardGame;

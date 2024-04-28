@@ -1,25 +1,43 @@
 import React from "react";
 import styled from "styled-components";
+import CommonBtn from "./CommonBtn";
 
-type Props = {};
+type Props = {
+  score: number;
+  maxScore: number;
+};
 
 const Header = (props: Props) => {
   return (
     <HeaderContainer>
-      <HeaderH1>웨비의 카드 맞히기~</HeaderH1>
-      <HeaderScore>score</HeaderScore>
+      <HeaderTxtWrapper>
+        <HeaderH1>웨비의 카드 맞히기~</HeaderH1>
+        <HeaderScore>
+          {props.score} / {props.maxScore}
+        </HeaderScore>
+      </HeaderTxtWrapper>
+
+      <CommonBtn text="Reset" />
     </HeaderContainer>
   );
 };
 
 const HeaderContainer = styled.div`
+  width: 100%;
   height: 5rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   color: white;
   background-color: ${({ theme }) => theme.colors.mainBlue};
+`;
+
+const HeaderTxtWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
 `;
 
 const HeaderH1 = styled.h1`

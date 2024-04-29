@@ -34,5 +34,6 @@ const CardGroupContainer = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.8rem;
+  margin-bottom: 10rem;
 `;
 export default CardGroup;

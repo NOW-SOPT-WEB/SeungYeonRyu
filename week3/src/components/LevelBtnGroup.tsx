@@ -21,7 +21,11 @@ const LevelBtnGroup = (props: Props) => {
   return (
     <BtnGroupContainer>
       {level.map((diff) => (
-        <CommonBtn text={diff.text} onclick={handleLevelBtn(diff.num)} />
+        <CommonBtn
+          key={diff.text}
+          text={diff.text}
+          onclick={handleLevelBtn(diff.num)}
+        />
       ))}
     </BtnGroupContainer>
   );

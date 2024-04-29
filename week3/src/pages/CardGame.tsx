@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import styled from "styled-components";
 import LevelBtnGroup from "../components/LevelBtnGroup";
@@ -9,6 +9,7 @@ import { getNumberofCards } from "../utils/getNumberofCards";
 import { shuffleCards } from "../utils/shuffleCards";
 
 const CardGame = () => {
+  // 카드 데이터
   const [cards, setCards] = useState<{ id: number; image: string }[]>([]);
 
   // 모달
@@ -26,15 +27,31 @@ const CardGame = () => {
 
   // 점수
   const [score, setScore] = useState(0);
+  /** 점수 1씩 올리기 */
   const handleScoreIncrease = () => {
     setScore(score + 1);
   };
+  /** 점수 0으로 초기화 */
+  const resetScore = () => {
+    setScore(0);
+  };
 
-  // difficulty 바뀌면 새로운 카드셋 설정
+  // reset 여부
+  const [resetFlag, setResetFlag] = useState(false);
+  /** 리셋 필요시 사용 */
+  const giveResetSign = () => {
+    setResetFlag(true);
+  };
+  /** 리셋 완료시 사용 */
+  const turnOffResetFlag = () => {
+    setResetFlag(false);
+  };
+
+  // difficulty change, after reset => 새로운 카드셋 설정
   useEffect(() => {
     const newCards = getCards(difficulty);
     setCards(shuffleCards(newCards.concat(newCards)));
-  }, [difficulty]);
+  }, [difficulty, resetFlag]);
 
   // score이 maxscore 넘었는지 체크
   useEffect(() => {
@@ -43,15 +60,6 @@ const CardGame = () => {
       setResetFlag(true);
     }
   }, [score]);
-
-  // reset 여부
-  const [resetFlag, setResetFlag] = useState(false);
-  const giveResetSign = () => {
-    setResetFlag(true);
-  };
-  const turnOffResetFlag = () => {
-    setResetFlag(false);
-  };
   return (
     <>
       {finishModalOpen ? (
@@ -72,6 +80,7 @@ const CardGame = () => {
         <CardGroup
           cards={cards}
           handleScoreIncrease={handleScoreIncrease}
+          resetScore={resetScore}
           resetFlag={resetFlag}
           turnOffResetFlag={turnOffResetFlag}
         />

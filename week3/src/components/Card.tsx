@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 type Props = {
+  cardId: string;
   card: {
     id: number;
     image: string;
   };
-  handleCurrent: (cardId: number) => void;
+  handleCurrent: (cardId: string) => void;
   flip: boolean;
 };
 
@@ -13,7 +14,7 @@ const Card = (props: Props) => {
   return (
     <CardFlipWrapper
       onClick={() => {
-        props.handleCurrent(props.card.id);
+        props.handleCurrent(props.cardId);
       }}
     >
       <CardContainer $flipped={props.flip}>

@@ -6,9 +6,17 @@ import CardGroup from "../components/CardGroup";
 import FinishModal from "../components/FinishModal";
 
 const CardGame = () => {
+  // 모달
   const [finishModalOpen, setFinishModalOpen] = useState(false);
   const handleFinishModal = () => {
     setFinishModalOpen(!finishModalOpen);
+  };
+
+  // 난이도
+  // 쉬움 1, 보통 2, 어려움 3
+  const [difficulty, setDifficulty] = useState(2);
+  const changeDifficulty = (difficulty: number) => {
+    setDifficulty(difficulty);
   };
   return (
     <>
@@ -18,7 +26,7 @@ const CardGame = () => {
 
       <CardPageContainer>
         <Header score={3} maxScore={5} />
-        <LevelBtnGroup />
+        <LevelBtnGroup changeDifficulty={changeDifficulty} />
         <CardGroup difficulty={10} />
       </CardPageContainer>
     </>

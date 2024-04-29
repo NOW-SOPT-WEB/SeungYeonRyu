@@ -2,14 +2,27 @@ import React from "react";
 import CommonBtn from "./CommonBtn";
 import styled from "styled-components";
 
-type Props = {};
+type Props = {
+  changeDifficulty: (difficulty: number) => void;
+};
 
 const LevelBtnGroup = (props: Props) => {
+  const level = [
+    { text: "EASY", num: 1 },
+    { text: "NORMAL", num: 2 },
+    { text: "HARD", num: 3 },
+  ];
+  const handleLevelBtn = (difficulty: number) => {
+    return () => {
+      props.changeDifficulty(difficulty);
+    };
+  };
+
   return (
     <BtnGroupContainer>
-      <CommonBtn text="EASY" />
-      <CommonBtn text="NORMAL" />
-      <CommonBtn text="HARD" />
+      {level.map((diff) => (
+        <CommonBtn text={diff.text} onclick={handleLevelBtn(diff.num)} />
+      ))}
     </BtnGroupContainer>
   );
 };

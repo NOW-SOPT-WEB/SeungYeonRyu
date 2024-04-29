@@ -1,7 +1,6 @@
-import React from "react";
+import { useState } from "react";
 import Card from "./Card";
 import styled from "styled-components";
-import { shuffleCards } from "../utils/shuffleCards";
 
 type Props = {
   cards: { id: number; image: string }[];
@@ -9,13 +8,21 @@ type Props = {
 };
 
 const CardGroup = (props: Props) => {
+  // 현재 선택한 카드
+  const [current, setCurrent] = useState(-1);
+  const handleCurrent = (cardId: number) => {
+    setCurrent(cardId);
+  };
+
   return (
     <CardGroupContainer>
-      {shuffleCards(props.cards).map((card) => (
-        <Card key={"card1" + card.id} img={card.image} />
-      ))}
-      {shuffleCards(props.cards).map((card) => (
-        <Card key={"card2" + card.id} img={card.image} />
+      {props.cards.map((card, idx) => (
+        <Card
+          key={"card" + card.id + idx}
+          card={card}
+          handleCurrent={handleCurrent}
+          flip={current === card.id ? true : false}
+        />
       ))}
     </CardGroupContainer>
   );

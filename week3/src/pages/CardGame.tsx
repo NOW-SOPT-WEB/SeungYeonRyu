@@ -6,6 +6,7 @@ import CardGroup from "../components/CardGroup";
 import FinishModal from "../components/FinishModal";
 import { getCards } from "../utils/getCards";
 import { getNumberofCards } from "../utils/getNumberofCards";
+import { shuffleCards } from "../utils/shuffleCards";
 
 const CardGame = () => {
   const [cards, setCards] = useState<{ id: number; image: string }[]>([]);
@@ -29,8 +30,10 @@ const CardGame = () => {
     setScore(score + 1);
   };
 
+  // difficulty 바뀌면 새로운 카드셋 설정
   useEffect(() => {
-    setCards(getCards(difficulty));
+    const newCards = getCards(difficulty);
+    setCards(shuffleCards(newCards.concat(newCards)));
   }, [difficulty]);
 
   return (

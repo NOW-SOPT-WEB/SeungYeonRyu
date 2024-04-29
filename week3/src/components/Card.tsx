@@ -1,22 +1,23 @@
-import React, { useState } from "react";
 import styled from "styled-components";
 
 type Props = {
-  img: string;
+  card: {
+    id: number;
+    image: string;
+  };
+  handleCurrent: (cardId: number) => void;
+  flip: boolean;
 };
 
 const Card = (props: Props) => {
-  const [flipped, setFlipped] = useState(false);
-
-  /** 카드 뒤집기 */
-  const flipCard = () => {
-    setFlipped(!flipped);
-  };
-
   return (
-    <CardFlipWrapper onClick={flipCard}>
-      <CardContainer $flipped={flipped}>
-        <CardBack $img={props.img} />
+    <CardFlipWrapper
+      onClick={() => {
+        props.handleCurrent(props.card.id);
+      }}
+    >
+      <CardContainer $flipped={props.flip}>
+        <CardBack $img={props.card.image} />
         <CardFront />
       </CardContainer>
     </CardFlipWrapper>

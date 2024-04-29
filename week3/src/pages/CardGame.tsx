@@ -34,7 +34,10 @@ const CardGame = () => {
 
       <CardPageContainer>
         <Header score={3} maxScore={5} />
-        <LevelBtnGroup changeDifficulty={changeDifficulty} />
+        <LevelBtnGroup
+          difficulty={difficulty}
+          changeDifficulty={changeDifficulty}
+        />
         <CardGroup cards={cards} />
       </CardPageContainer>
     </>
@@ -45,6 +48,7 @@ const CardGame = () => {
 const CardPageContainer = styled.div`
   width: 100%;
   height: 100%;
+  min-height: 100dvh;
 
   display: flex;
   flex-direction: column;

@@ -1,12 +1,14 @@
 import React from "react";
 import CommonBtn from "./CommonBtn";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 
 type Props = {
+  difficulty: number;
   changeDifficulty: (difficulty: number) => void;
 };
 
 const LevelBtnGroup = (props: Props) => {
+  const theme = useTheme();
   const level = [
     { text: "EASY", num: 1 },
     { text: "NORMAL", num: 2 },
@@ -25,6 +27,11 @@ const LevelBtnGroup = (props: Props) => {
           key={diff.text}
           text={diff.text}
           onclick={handleLevelBtn(diff.num)}
+          color={
+            props.difficulty === diff.num
+              ? theme.colors.magenta
+              : theme.colors.pointGreen
+          }
         />
       ))}
     </BtnGroupContainer>

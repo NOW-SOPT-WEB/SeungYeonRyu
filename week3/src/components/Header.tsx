@@ -5,6 +5,7 @@ import CommonBtn from "./CommonBtn";
 type Props = {
   score: number;
   maxScore: number;
+  giveResetSign: () => void;
 };
 
 const Header = (props: Props) => {
@@ -17,7 +18,7 @@ const Header = (props: Props) => {
         </HeaderScore>
       </HeaderTxtWrapper>
 
-      <CommonBtn text="Reset" />
+      <CommonBtn text="Reset" onclick={props.giveResetSign} />
     </HeaderContainer>
   );
 };

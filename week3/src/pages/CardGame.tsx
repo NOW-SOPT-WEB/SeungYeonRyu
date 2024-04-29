@@ -36,6 +36,14 @@ const CardGame = () => {
     setCards(shuffleCards(newCards.concat(newCards)));
   }, [difficulty]);
 
+  // reset 여부
+  const [resetFlag, setResetFlag] = useState(false);
+  const giveResetSign = () => {
+    setResetFlag(true);
+  };
+  const turnOffResetFlag = () => {
+    setResetFlag(false);
+  };
   return (
     <>
       {finishModalOpen ? (
@@ -43,12 +51,22 @@ const CardGame = () => {
       ) : null}
 
       <CardPageContainer>
-        <Header score={score} maxScore={getNumberofCards(difficulty)} />
+        <Header
+          score={score}
+          maxScore={getNumberofCards(difficulty)}
+          giveResetSign={giveResetSign}
+        />
         <LevelBtnGroup
           difficulty={difficulty}
           changeDifficulty={changeDifficulty}
+          giveResetSign={giveResetSign}
         />
-        <CardGroup cards={cards} handleScoreIncrease={handleScoreIncrease} />
+        <CardGroup
+          cards={cards}
+          handleScoreIncrease={handleScoreIncrease}
+          resetFlag={resetFlag}
+          turnOffResetFlag={turnOffResetFlag}
+        />
       </CardPageContainer>
     </>
   );

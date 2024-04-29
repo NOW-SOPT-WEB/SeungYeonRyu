@@ -5,6 +5,7 @@ import styled, { useTheme } from "styled-components";
 type Props = {
   difficulty: number;
   changeDifficulty: (difficulty: number) => void;
+  giveResetSign: () => void;
 };
 
 const LevelBtnGroup = (props: Props) => {
@@ -17,6 +18,7 @@ const LevelBtnGroup = (props: Props) => {
   const handleLevelBtn = (difficulty: number) => {
     return () => {
       props.changeDifficulty(difficulty);
+      props.giveResetSign();
     };
   };
 

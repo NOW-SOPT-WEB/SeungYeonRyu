@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "./Card";
 import styled from "styled-components";
 
 type Props = {
   cards: { id: number; image: string }[];
   handleScoreIncrease: () => void;
+  resetFlag: boolean;
+  turnOffResetFlag: () => void;
 };
 
 const CardGroup = (props: Props) => {
@@ -13,6 +15,19 @@ const CardGroup = (props: Props) => {
   const handleCurrent = (cardId: number) => {
     setCurrent(cardId);
   };
+
+  /** 현재 선택한 카드 리셋 */
+  const resetCurrent = () => {
+    setCurrent(-1);
+  };
+
+  // resetFlag true면 reset
+  useEffect(() => {
+    if (props.resetFlag) {
+      resetCurrent();
+      props.turnOffResetFlag();
+    }
+  }, [props.resetFlag]);
 
   return (
     <CardGroupContainer>

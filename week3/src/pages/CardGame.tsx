@@ -5,6 +5,7 @@ import LevelBtnGroup from "../components/LevelBtnGroup";
 import CardGroup from "../components/CardGroup";
 import FinishModal from "../components/FinishModal";
 import { getCards } from "../utils/getCards";
+import { getNumberofCards } from "../utils/getNumberofCards";
 
 const CardGame = () => {
   const [cards, setCards] = useState<{ id: number; image: string }[]>([]);
@@ -22,6 +23,12 @@ const CardGame = () => {
     setDifficulty(difficulty);
   };
 
+  // 점수
+  const [score, setScore] = useState(0);
+  const handleScoreIncrease = () => {
+    setScore(score + 1);
+  };
+
   useEffect(() => {
     setCards(getCards(difficulty));
   }, [difficulty]);
@@ -33,12 +40,12 @@ const CardGame = () => {
       ) : null}
 
       <CardPageContainer>
-        <Header score={3} maxScore={5} />
+        <Header score={score} maxScore={getNumberofCards(difficulty)} />
         <LevelBtnGroup
           difficulty={difficulty}
           changeDifficulty={changeDifficulty}
         />
-        <CardGroup cards={cards} />
+        <CardGroup cards={cards} handleScoreIncrease={handleScoreIncrease} />
       </CardPageContainer>
     </>
   );

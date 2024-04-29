@@ -3,7 +3,10 @@ import Card from "./Card";
 import styled from "styled-components";
 import { shuffleCards } from "../utils/shuffleCards";
 
-type Props = { cards: { id: number; image: string }[] };
+type Props = {
+  cards: { id: number; image: string }[];
+  handleScoreIncrease: () => void;
+};
 
 const CardGroup = (props: Props) => {
   return (

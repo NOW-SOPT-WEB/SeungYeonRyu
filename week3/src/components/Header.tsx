@@ -1,6 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 import CommonBtn from "./CommonBtn";
+import ResetBtn from "./ResetBtn";
 
 type Props = {
   score: number;
@@ -18,7 +18,9 @@ const Header = (props: Props) => {
         </HeaderScore>
       </HeaderTxtWrapper>
 
-      <CommonBtn text="Reset" onclick={props.giveResetSign} />
+      <ResetBtn
+        children={<CommonBtn text="Reset" onclick={props.giveResetSign} />}
+      />
     </HeaderContainer>
   );
 };

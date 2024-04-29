@@ -1,10 +1,11 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import CommonBtn from "./CommonBtn";
 
 type Props = { handleFinishModal: () => void };
 
 const FinishModal = (props: Props) => {
+  const theme = useTheme();
   return (
     <ModalBG>
       <ModalBlock>
@@ -12,7 +13,11 @@ const FinishModal = (props: Props) => {
           <ModalTitle>축하해요~</ModalTitle>
           <ModalContent>카드를 모두 찾았어요</ModalContent>
         </ModalTextWrapper>
-        <CommonBtn text="돌아가기" onclick={props.handleFinishModal} />
+        <CommonBtn
+          text="돌아가기"
+          color={theme.colors.mainBlue}
+          onclick={props.handleFinishModal}
+        />
       </ModalBlock>
     </ModalBG>
   );

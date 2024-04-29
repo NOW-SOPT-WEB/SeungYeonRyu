@@ -65,20 +65,22 @@ const CardGroup = (props: Props) => {
 
   return (
     <CardGroupContainer>
-      {props.cards.map((card, idx) => (
-        <Card
-          key={card.id + "_" + idx}
-          cardId={card.id + "_" + idx}
-          card={card}
-          handleCurrent={handleCurrent}
-          flip={
-            current === card.id + "_" + idx ||
-            correctCards.includes(String(card.id))
-              ? true
-              : false
-          }
-        />
-      ))}
+      {props.cards.map((card, idx) => {
+        const tmpCardId = card.id + "_" + idx;
+        return (
+          <Card
+            key={tmpCardId}
+            cardId={tmpCardId}
+            card={card}
+            handleCurrent={handleCurrent}
+            flip={
+              current === tmpCardId || correctCards.includes(String(card.id))
+                ? true
+                : false
+            }
+          />
+        );
+      })}
     </CardGroupContainer>
   );
 };

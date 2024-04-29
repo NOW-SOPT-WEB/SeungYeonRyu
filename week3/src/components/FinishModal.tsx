@@ -29,6 +29,7 @@ const ModalBG = styled.div`
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
 `;
 
 /** 모달 화면 */
@@ -44,6 +45,7 @@ const ModalBlock = styled.div`
   background-color: ${({ theme }) => theme.colors.pointGreen};
   border: 5px solid black;
   border-radius: 12px;
+  z-index: 2;
 `;
 
 /** 모달 내용 래퍼 */

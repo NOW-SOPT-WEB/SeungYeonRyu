@@ -36,6 +36,14 @@ const CardGame = () => {
     setCards(shuffleCards(newCards.concat(newCards)));
   }, [difficulty]);
 
+  // score이 maxscore 넘었는지 체크
+  useEffect(() => {
+    if (score == getNumberofCards(difficulty)) {
+      handleFinishModal();
+      setResetFlag(true);
+    }
+  }, [score]);
+
   // reset 여부
   const [resetFlag, setResetFlag] = useState(false);
   const giveResetSign = () => {

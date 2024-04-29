@@ -1,18 +1,19 @@
 import React from "react";
 import Card from "./Card";
 import styled from "styled-components";
+import { shuffleCards } from "../utils/shuffleCards";
 
-type Props = { difficulty: number };
+type Props = { cards: { id: number; image: string }[] };
 
 const CardGroup = (props: Props) => {
   return (
     <CardGroupContainer>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {shuffleCards(props.cards).map((card) => (
+        <Card key={"card1" + card.id} img={card.image} />
+      ))}
+      {shuffleCards(props.cards).map((card) => (
+        <Card key={"card2" + card.id} img={card.image} />
+      ))}
     </CardGroupContainer>
   );
 };

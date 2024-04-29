@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-type Props = {};
+type Props = {
+  img: string;
+};
 
 const Card = (props: Props) => {
   const [flipped, setFlipped] = useState(false);
@@ -14,7 +16,7 @@ const Card = (props: Props) => {
   return (
     <CardFlipWrapper onClick={flipCard}>
       <CardContainer $flipped={flipped}>
-        <CardBack />
+        <CardBack $img={props.img} />
         <CardFront />
       </CardContainer>
     </CardFlipWrapper>
@@ -48,9 +50,13 @@ const CardFront = styled(CardSide)`
   background-color: white;
 `;
 
-const CardBack = styled(CardSide)`
+const CardBack = styled(CardSide)<{ $img: string }>`
   background-color: ${({ theme }) => theme.colors.pointGreen};
   transform: rotateY(180deg);
+  background-image: url(${(props) => props.$img});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
 export default Card;

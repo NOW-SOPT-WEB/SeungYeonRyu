@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import CommonBtn from "./CommonBtn";
 import ResetBtn from "./ResetBtn";
+import { btnText, headerText } from "../constants/textData";
 
 type Props = {
   score: number;
@@ -12,14 +13,16 @@ const Header = (props: Props) => {
   return (
     <HeaderContainer>
       <HeaderTxtWrapper>
-        <HeaderH1>웨비의 카드 맞히기~</HeaderH1>
+        <HeaderH1>{headerText.title}</HeaderH1>
         <HeaderScore>
           {props.score} / {props.maxScore}
         </HeaderScore>
       </HeaderTxtWrapper>
 
       <ResetBtn
-        children={<CommonBtn text="Reset" onclick={props.giveResetSign} />}
+        children={
+          <CommonBtn text={btnText.reset} onclick={props.giveResetSign} />
+        }
       />
     </HeaderContainer>
   );

@@ -1,6 +1,6 @@
-import React from "react";
 import styled, { useTheme } from "styled-components";
 import CommonBtn from "./CommonBtn";
+import { btnText, finishModalText } from "../constants/textData";
 
 type Props = { handleFinishModal: () => void };
 
@@ -10,11 +10,11 @@ const FinishModal = (props: Props) => {
     <ModalBG>
       <ModalBlock>
         <ModalTextWrapper>
-          <ModalTitle>축하해요~</ModalTitle>
-          <ModalContent>카드를 모두 찾았어요</ModalContent>
+          <ModalTitle>{finishModalText.title}</ModalTitle>
+          <ModalContent>{finishModalText.content}</ModalContent>
         </ModalTextWrapper>
         <CommonBtn
-          text="돌아가기"
+          text={btnText.back}
           color={theme.colors.mainBlue}
           onclick={props.handleFinishModal}
         />
@@ -25,14 +25,16 @@ const FinishModal = (props: Props) => {
 
 /** 모달 뒤 opacity 배경 */
 const ModalBG = styled.div`
+  width: 100%;
+  height: 100%;
+
   position: fixed;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 1;
 `;

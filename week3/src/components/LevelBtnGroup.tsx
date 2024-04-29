@@ -1,6 +1,6 @@
-import React from "react";
 import CommonBtn from "./CommonBtn";
 import styled, { useTheme } from "styled-components";
+import level from "../constants/level";
 
 type Props = {
   difficulty: number;
@@ -10,11 +10,6 @@ type Props = {
 
 const LevelBtnGroup = (props: Props) => {
   const theme = useTheme();
-  const level = [
-    { text: "EASY", num: 1 },
-    { text: "NORMAL", num: 2 },
-    { text: "HARD", num: 3 },
-  ];
   const handleLevelBtn = (difficulty: number) => {
     return () => {
       props.changeDifficulty(difficulty);

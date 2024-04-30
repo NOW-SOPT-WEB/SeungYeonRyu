@@ -7,10 +7,11 @@ import FinishModal from "../components/FinishModal";
 import { getCards } from "../utils/getCards";
 import { getNumberofCards } from "../utils/getNumberofCards";
 import { shuffleCards } from "../utils/shuffleCards";
+import { Card } from "../types";
 
 const CardGame = () => {
   // 카드 데이터
-  const [cards, setCards] = useState<{ id: number; image: string }[]>([]);
+  const [cards, setCards] = useState<Card[]>([]);
 
   // 모달
   const [finishModalOpen, setFinishModalOpen] = useState(false);

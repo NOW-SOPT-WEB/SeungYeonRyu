@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { backImg } from "../assets/cardImage/cardImage";
 
 type Props = {
   cardId: string;
@@ -19,7 +20,7 @@ const Card = (props: Props) => {
     >
       <CardContainer $flipped={props.flip}>
         <CardBack $img={props.card.image} />
-        <CardFront />
+        <CardFront $img={backImg} />
       </CardContainer>
     </CardFlipWrapper>
   );
@@ -48,8 +49,10 @@ const CardSide = styled.div`
   backface-visibility: hidden;
 `;
 
-const CardFront = styled(CardSide)`
-  background-color: white;
+const CardFront = styled(CardSide)<{ $img: string }>`
+  background-image: url(${(props) => props.$img});
+  background-size: cover;
+  background-position: center;
 `;
 
 const CardBack = styled(CardSide)<{ $img: string }>`

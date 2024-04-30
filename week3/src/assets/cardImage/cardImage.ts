@@ -7,6 +7,7 @@ import Diglett from "./Diglett.png";
 import Mudkip from "./Mudkip.png";
 import Slowpoke from "./Slowpoke.png";
 import Darumaka from "./Darumaka.png";
+import BackImg from "./backSide.jpeg";
 
 export const cardImage = {
   cardImg1: Bellsprout,
@@ -19,3 +20,5 @@ export const cardImage = {
   cardImg8: Slowpoke,
   cardImg9: Darumaka,
 };
+
+export const backImg = BackImg;

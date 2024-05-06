@@ -16,7 +16,7 @@ const FinishModal = (props: Props) => {
         <CommonBtn
           text={btnText.back}
           color={theme.colors.mainBlue}
-          onclick={props.handleFinishModal}
+          onClick={props.handleFinishModal}
         />
       </ModalBlock>
     </ModalBG>

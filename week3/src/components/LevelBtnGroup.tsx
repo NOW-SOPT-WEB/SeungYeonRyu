@@ -23,7 +23,7 @@ const LevelBtnGroup = (props: Props) => {
         <CommonBtn
           key={diff.text}
           text={diff.text}
-          onclick={handleLevelBtn(diff.num)}
+          onClick={handleLevelBtn(diff.num)}
           color={
             props.difficulty === diff.num
               ? theme.colors.magenta

@@ -21,7 +21,7 @@ const Header = (props: Props) => {
 
       <ResetBtn
         children={
-          <CommonBtn text={btnText.reset} onclick={props.giveResetSign} />
+          <CommonBtn text={btnText.reset} onClick={props.giveResetSign} />
         }
       />
     </HeaderContainer>

@@ -4,12 +4,12 @@ import styled from "styled-components";
 type Props = {
   text: string;
   color?: string;
-  onclick: () => void;
+  onClick: () => void;
 };
 
 const CommonBtn = (props: Props) => {
   return (
-    <BtnContainer color={props.color} onClick={props.onclick}>
+    <BtnContainer color={props.color} onClick={props.onClick}>
       {props.text}
     </BtnContainer>
   );

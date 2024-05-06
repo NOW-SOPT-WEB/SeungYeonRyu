@@ -56,7 +56,7 @@ const CardGame = () => {
 
   // score이 maxscore 넘었는지 체크
   useEffect(() => {
-    if (score == getNumberofCards(difficulty)) {
+    if (score === getNumberofCards(difficulty)) {
       handleFinishModal();
       setResetFlag(true);
     }

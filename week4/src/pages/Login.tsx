@@ -32,6 +32,7 @@ const LoginModal = styled.div`
 `;
 const LoginTitle = styled.h1`
   font-size: 2rem;
+  font-weight: 600;
 `;
 const LoginImage = styled.img`
   width: 8rem;

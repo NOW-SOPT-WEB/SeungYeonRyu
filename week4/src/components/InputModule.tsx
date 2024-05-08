@@ -9,28 +9,28 @@ type Props = {
 
 const InputModule = (props: Props) => {
   return (
-    <LoginInputWrapper>
-      <LoginInputLabel>{props.labelTxt}</LoginInputLabel>
-      <Logininput
+    <InputWrapper>
+      <InputLabel>{props.labelTxt}</InputLabel>
+      <Input
         type={props.inputType}
         value={props.val}
         onChange={props.onChange}
-      ></Logininput>
-    </LoginInputWrapper>
+      ></Input>
+    </InputWrapper>
   );
 };
-const LoginInputWrapper = styled.div`
+const InputWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
 `;
-const LoginInputLabel = styled.label`
-  width: 2rem;
+const InputLabel = styled.label`
+  width: 4rem;
   text-align: right;
   font-size: 1rem;
   font-weight: 600;
 `;
-const Logininput = styled.input`
+const Input = styled.input`
   width: 10rem;
   height: 1.4rem;
   border-radius: 3rem;

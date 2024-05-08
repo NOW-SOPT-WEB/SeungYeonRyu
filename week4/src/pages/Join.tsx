@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { ALERTMSG } from "../constants/messages";
 import { checkPhoneNo } from "../utils/checkPhoneNo";
 import { useState } from "react";
+import { verifyPwd } from "../utils/verifyPwd";
 
 const Join = () => {
   const navigate = useNavigate();
@@ -52,6 +53,9 @@ const Join = () => {
     }
     if (phone === "") {
       alert(ALERTMSG.phone);
+      return false;
+    } else if (!verifyPwd(pwd)) {
+      alert(ALERTMSG.pwdFormat);
       return false;
     }
     return true;

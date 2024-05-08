@@ -1,13 +1,37 @@
 import ReactPlayer from "react-player";
 import mainVideo from "../assets/video/mainVideo.mp4";
-type Props = {};
+import styled from "styled-components";
+import CommonBtn from "../components/CommonBtn";
 
-const MainPage = (props: Props) => {
+const MainPage = () => {
   return (
-    <div>
-      <ReactPlayer url={mainVideo} loop={true} playing={true} />
-    </div>
+    <MainContainer>
+      <ReactPlayer
+        url={mainVideo}
+        playing={true}
+        loop={true}
+        playbackRate={4}
+      />
+      <BtnWrapper>
+        <CommonBtn text="내 정보" link="/mypage" />
+        <CommonBtn text="회원가입" link="/join" />
+      </BtnWrapper>
+    </MainContainer>
   );
 };
+const MainContainer = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+`;
 
+const BtnWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
 export default MainPage;

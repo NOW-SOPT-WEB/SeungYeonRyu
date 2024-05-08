@@ -6,18 +6,27 @@ type Props = {};
 
 const Login = (props: Props) => {
   return (
-    <LoginModal>
-      <LoginTitle>Login</LoginTitle>
-      <LoginImage src={LoginImg} />
-      <LoginInput />
-      <LoginBtnWrapper>
-        <CommonBtn text="로그인" />
-        <CommonBtn text="회원가입" />
-      </LoginBtnWrapper>
-    </LoginModal>
+    <LoginContainer>
+      <LoginModal>
+        <LoginTitle>Login</LoginTitle>
+        <LoginImage src={LoginImg} />
+        <LoginInput />
+        <LoginBtnWrapper>
+          <CommonBtn text="로그인" />
+          <CommonBtn text="회원가입" />
+        </LoginBtnWrapper>
+      </LoginModal>
+    </LoginContainer>
   );
 };
-
+const LoginContainer = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+`;
 const LoginModal = styled.div`
   display: flex;
   width: fit-content;
@@ -28,6 +37,7 @@ const LoginModal = styled.div`
 
   padding: 6rem;
   background-color: white;
+  border-radius: 4%;
   border: solid 3px black;
 `;
 const LoginTitle = styled.h1`

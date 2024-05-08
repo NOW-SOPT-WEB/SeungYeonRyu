@@ -4,6 +4,7 @@ import styled from "styled-components";
 type Props = {
   text: string;
   link?: string;
+  onClick?: () => void;
 };
 
 const CommonBtn = (props: Props) => {
@@ -12,7 +13,7 @@ const CommonBtn = (props: Props) => {
       {props.link ? (
         <StyledLink to={props.link}>{props.text}</StyledLink>
       ) : (
-        <p>{props.text}</p>
+        <p onClick={props.onClick}>{props.text}</p>
       )}
     </BtnContainer>
   );

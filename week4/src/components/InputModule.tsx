@@ -4,6 +4,8 @@ type Props = {
   labelTxt: string;
   inputType: string;
   val: string;
+  warningMsg?: string;
+  warn?: boolean;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
 };
 
@@ -11,11 +13,16 @@ const InputModule = (props: Props) => {
   return (
     <InputWrapper>
       <InputLabel>{props.labelTxt}</InputLabel>
-      <Input
-        type={props.inputType}
-        value={props.val}
-        onChange={props.onChange}
-      ></Input>
+      <InputBox>
+        <Input
+          type={props.inputType}
+          value={props.val}
+          onChange={props.onChange}
+        />
+        {props.warningMsg && props.warn ? (
+          <ErrorMsg>{props.warningMsg}</ErrorMsg>
+        ) : null}
+      </InputBox>
     </InputWrapper>
   );
 };
@@ -23,6 +30,10 @@ const InputWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+`;
+const InputBox = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 const InputLabel = styled.label`
   width: 6.5rem;
@@ -35,5 +46,10 @@ const Input = styled.input`
   height: 1.4rem;
   border-radius: 3rem;
   border: solid 1px black;
+`;
+const ErrorMsg = styled.p`
+  padding: 0.2rem;
+  color: red;
+  font-size: 0.8rem;
 `;
 export default InputModule;

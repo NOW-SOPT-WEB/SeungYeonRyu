@@ -4,13 +4,16 @@ import useForm from "../hooks/useForm";
 import InputModule from "../components/InputModule";
 import CommonBtn from "../components/CommonBtn";
 import { memberJoin } from "../apis/memberJoin";
+import { useNavigate } from "react-router-dom";
 
 const Join = () => {
+  const navigate = useNavigate();
   const [id, setId] = useForm("");
   const [pwd, setPwd] = useForm("");
   const [nickName, setNickName] = useForm("");
   const [phone, setPhone] = useForm("");
 
+  /** 회원가입 */
   const handleJoin = async () => {
     const data = {
       authenticationId: id,
@@ -18,9 +21,33 @@ const Join = () => {
       nickname: nickName,
       phone: phone,
     };
-    const res = await memberJoin(data);
-    console.log(res)
-    // res 헤더 location에서 memberId 빼오기
+    if (checkInput()) {
+      const res = await memberJoin(data);
+      if (res) {
+        if (confirm(res?.data.message)) navigate("/");
+      }
+    }
+  };
+
+  /** 인풋 확인 */
+  const checkInput = () => {
+    if (id === "") {
+      alert("id를 입력하세요");
+      return false;
+    }
+    if (pwd === "") {
+      alert("비밀번호를 입력하세요");
+      return false;
+    }
+    if (nickName === "") {
+      alert("닉네임을 입력하세요");
+      return false;
+    }
+    if (phone === "") {
+      alert("전화번호를 입력하세요");
+      return false;
+    }
+    return true;
   };
   return (
     <ModalLayout>
@@ -32,6 +59,8 @@ const Join = () => {
           inputType="password"
           val={pwd}
           onChange={setPwd}
+          warningMsg="비밀번호 형식은 8자이상, 숫자, 특수문자, 영어 알파벳이 포함되어야 합니다."
+          warn={true}
         />
         <InputModule
           labelTxt="닉네임"
@@ -44,6 +73,8 @@ const Join = () => {
           inputType="text"
           val={phone}
           onChange={setPhone}
+          warningMsg="전화번호 형식은 010-****-****입니다."
+          warn={true}
         />
       </InputContainer>
       <BtnWrapper>

@@ -4,8 +4,10 @@ import InputModule from "./InputModule";
 import CommonBtn from "./CommonBtn";
 import { useEffect, useState } from "react";
 import { memberLogin } from "../apis/memberLogin";
+import { useNavigate } from "react-router-dom";
 
 const LoginInput = () => {
+  const navigate = useNavigate();
   const [id, setId] = useForm("");
   const [pwd, setPwd] = useForm("");
 
@@ -13,6 +15,7 @@ const LoginInput = () => {
   const [idWarn, setIdwarn] = useState(false);
   const [pwdWarn, setPwdwarn] = useState(false);
 
+  /** 로그인 */
   const handleLogin = async () => {
     if (checkValid()) {
       const data = {
@@ -20,7 +23,9 @@ const LoginInput = () => {
         password: pwd,
       };
       const res = await memberLogin(data);
-      console.log(res);
+      if (res) {
+        if (confirm(res?.data.message)) navigate("/main");
+      }
     }
   };
 

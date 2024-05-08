@@ -12,5 +12,6 @@ export const memberLogin = async (props: LoginType) => {
     else {
       console.log(error, "unknown error: memberLogin");
     }
+    return false;
   }
 };

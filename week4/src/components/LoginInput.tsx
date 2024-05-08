@@ -4,7 +4,6 @@ import InputModule from "./InputModule";
 import CommonBtn from "./CommonBtn";
 import { useEffect, useState } from "react";
 import { memberLogin } from "../apis/memberLogin";
-import { isAxiosError } from "axios";
 
 const LoginInput = () => {
   const [id, setId] = useForm("");
@@ -16,20 +15,12 @@ const LoginInput = () => {
 
   const handleLogin = async () => {
     if (checkValid()) {
-      try {
-        const data = {
-          authenticationId: id,
-          password: pwd,
-        };
-        const res = await memberLogin(data);
-        console.log(res);
-      } catch (error) {
-        if (isAxiosError(error)) {
-          alert(error.response?.data.message || "unknown error: memberLogin");
-        } else {
-          console.log("unknown error: memberLogin");
-        }
-      }
+      const data = {
+        authenticationId: id,
+        password: pwd,
+      };
+      const res = await memberLogin(data);
+      console.log(res);
     }
   };
 

@@ -1,3 +1,4 @@
+import { isAxiosError } from "axios";
 import { LoginType } from "../types";
 import { serverAxios } from "./axios";
 
@@ -5,10 +6,11 @@ import { serverAxios } from "./axios";
 export const memberLogin = async (props: LoginType) => {
   try {
     const res = await serverAxios.post("/member/login", props);
-    return res.data.response.data;
+    return res;
   } catch (error) {
-    if (error) {
-      throw error;
+    if (isAxiosError(error)) alert(error.response?.data.message);
+    else {
+      console.log(error, "unknown error: memberLogin");
     }
   }
 };

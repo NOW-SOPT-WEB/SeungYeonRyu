@@ -12,31 +12,30 @@ const CommonBtn = (props: Props) => {
       {props.link ? (
         <StyledLink to={props.link}>{props.text}</StyledLink>
       ) : (
-        <BtnTxt>{props.text}</BtnTxt>
+        <p>{props.text}</p>
       )}
     </BtnContainer>
   );
 };
+const buttonStyle = `
+display: flex;
+width: 7rem;
+height: 1.5rem;
+justify-content: center;
+align-items: center;
 
-const BtnContainer = styled.div`
-  display: flex;
-  width: 7rem;
-  height: fit-content;
-  justify-content: center;
-  align-items: center;
+padding: 0.5rem;
+background-color: black;
+color: white;
+font-weight: 600;
 
-  padding: 0.5rem;
-  background-color: black;
-
-  border-radius: 3rem;
+border-radius: 3rem;
 `;
-const BtnTxt = styled.p`
-  color: white;
-  font-weight: 600;
+const BtnContainer = styled.div`
+  ${buttonStyle}
 `;
 const StyledLink = styled(Link)`
-  color: white;
-  font-weight: 600;
+  ${buttonStyle}
   text-decoration: none;
 `;
 

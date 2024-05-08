@@ -32,6 +32,7 @@ const InputWrapper = styled.div`
   gap: 1rem;
 `;
 const InputBox = styled.div`
+  width: 14rem;
   display: flex;
   flex-direction: column;
 `;
@@ -42,7 +43,7 @@ const InputLabel = styled.label`
   font-weight: 600;
 `;
 const Input = styled.input`
-  width: 10rem;
+  width: 100%;
   height: 1.4rem;
   border-radius: 3rem;
   border: solid 1px black;
@@ -51,5 +52,6 @@ const ErrorMsg = styled.p`
   padding: 0.2rem;
   color: red;
   font-size: 0.8rem;
+  word-break: keep-all;
 `;
 export default InputModule;

@@ -7,6 +7,7 @@ type Props = {
   warningMsg?: string;
   warn?: boolean;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
+  maxLen?: number;
 };
 
 const InputModule = (props: Props) => {
@@ -18,6 +19,7 @@ const InputModule = (props: Props) => {
           type={props.inputType}
           value={props.val}
           onChange={props.onChange}
+          maxLength={props.maxLen}
         />
         {props.warningMsg && props.warn ? (
           <ErrorMsg>{props.warningMsg}</ErrorMsg>

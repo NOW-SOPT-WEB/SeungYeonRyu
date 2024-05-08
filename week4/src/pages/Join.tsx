@@ -6,13 +6,19 @@ import CommonBtn from "../components/CommonBtn";
 import { memberJoin } from "../apis/memberJoin";
 import { useNavigate } from "react-router-dom";
 import { ALERTMSG } from "../constants/messages";
+import { checkPhoneNo } from "../utils/checkPhoneNo";
+import { useState } from "react";
 
 const Join = () => {
   const navigate = useNavigate();
   const [id, setId] = useForm("");
   const [pwd, setPwd] = useForm("");
   const [nickName, setNickName] = useForm("");
-  const [phone, setPhone] = useForm("");
+  const [phone, setPhone] = useState("");
+
+  const onPhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPhone(checkPhoneNo(e.target.value));
+  };
 
   /** 회원가입 */
   const handleJoin = async () => {
@@ -73,9 +79,10 @@ const Join = () => {
           labelTxt="전화번호"
           inputType="text"
           val={phone}
-          onChange={setPhone}
+          onChange={onPhoneChange}
           warningMsg="전화번호 형식은 010-****-****입니다."
           warn={true}
+          maxLen={13}
         />
       </InputContainer>
       <BtnWrapper>

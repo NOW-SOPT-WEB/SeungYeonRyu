@@ -22,10 +22,10 @@ const InputModule = (props: Props) => {
 const InputWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 `;
 const InputLabel = styled.label`
-  width: 4rem;
+  width: 6.5rem;
   text-align: right;
   font-size: 1rem;
   font-weight: 600;

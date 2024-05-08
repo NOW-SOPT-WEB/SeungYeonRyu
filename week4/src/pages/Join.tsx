@@ -3,14 +3,25 @@ import ModalLayout from "../components/ModalLayout";
 import useForm from "../hooks/useForm";
 import InputModule from "../components/InputModule";
 import CommonBtn from "../components/CommonBtn";
+import { memberJoin } from "../apis/memberJoin";
 
-type Props = {};
-
-const Join = (props: Props) => {
+const Join = () => {
   const [id, setId] = useForm("");
   const [pwd, setPwd] = useForm("");
   const [nickName, setNickName] = useForm("");
   const [phone, setPhone] = useForm("");
+
+  const handleJoin = async () => {
+    const data = {
+      authenticationId: id,
+      password: pwd,
+      nickname: nickName,
+      phone: phone,
+    };
+    const res = await memberJoin(data);
+    console.log(res)
+    // res 헤더 location에서 memberId 빼오기
+  };
   return (
     <ModalLayout>
       <JoinTitle>회원가입하기</JoinTitle>
@@ -36,7 +47,7 @@ const Join = (props: Props) => {
         />
       </InputContainer>
       <BtnWrapper>
-        <CommonBtn text="회원가입" />
+        <CommonBtn text="회원가입" onClick={handleJoin} />
         <CommonBtn text="뒤로가기" link="/" />
       </BtnWrapper>
     </ModalLayout>

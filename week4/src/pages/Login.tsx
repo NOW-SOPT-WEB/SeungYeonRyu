@@ -13,7 +13,7 @@ const Login = (props: Props) => {
         <LoginInput />
         <LoginBtnWrapper>
           <CommonBtn text="로그인" />
-          <CommonBtn text="회원가입" />
+          <CommonBtn text="회원가입" link="/join" />
         </LoginBtnWrapper>
       </LoginModal>
     </LoginContainer>

@@ -9,11 +9,15 @@ type Props = {
 
 const CommonBtn = (props: Props) => {
   return (
-    <BtnContainer>
+    <BtnContainer
+      onClick={() => {
+        props.onClick && props.onClick();
+      }}
+    >
       {props.link ? (
         <StyledLink to={props.link}>{props.text}</StyledLink>
       ) : (
-        <p onClick={props.onClick}>{props.text}</p>
+        <p>{props.text}</p>
       )}
     </BtnContainer>
   );

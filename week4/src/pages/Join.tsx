@@ -5,6 +5,7 @@ import InputModule from "../components/InputModule";
 import CommonBtn from "../components/CommonBtn";
 import { memberJoin } from "../apis/memberJoin";
 import { useNavigate } from "react-router-dom";
+import { ALERTMSG } from "../constants/messages";
 
 const Join = () => {
   const navigate = useNavigate();
@@ -32,19 +33,19 @@ const Join = () => {
   /** 인풋 확인 */
   const checkInput = () => {
     if (id === "") {
-      alert("id를 입력하세요");
+      alert(ALERTMSG.id);
       return false;
     }
     if (pwd === "") {
-      alert("비밀번호를 입력하세요");
+      alert(ALERTMSG.pwd);
       return false;
     }
     if (nickName === "") {
-      alert("닉네임을 입력하세요");
+      alert(ALERTMSG.nickName);
       return false;
     }
     if (phone === "") {
-      alert("전화번호를 입력하세요");
+      alert(ALERTMSG.phone);
       return false;
     }
     return true;

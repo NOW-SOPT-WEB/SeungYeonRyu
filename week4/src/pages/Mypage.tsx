@@ -33,19 +33,25 @@ const Mypage = () => {
   };
 
   useEffect(() => {
-    getMemberInfo();
+    if (userInfo === dummyInfo) getMemberInfo();
   }, []);
 
   return (
     <ModalLayout>
       <PageTitle>마이페이지</PageTitle>
       <InfoWrapper>
-        <p>id</p>
-        <p>닉네임</p>
-        <p>전화번호</p>
-        <p>{userInfo.authenticationId}</p>
-        <p>{userInfo.nickname}</p>
-        <p>{userInfo.phone}</p>
+        <InfoBinder>
+          <p>id</p>
+          <p>{userInfo.authenticationId}</p>
+        </InfoBinder>
+        <InfoBinder>
+          <p>닉네임</p>
+          <p>{userInfo.nickname}</p>
+        </InfoBinder>
+        <InfoBinder>
+          <p>전화번호</p>
+          <p>{userInfo.phone}</p>
+        </InfoBinder>
       </InfoWrapper>
       <ToggleTextBtn onClick={toggleOpenPwdChange}>
         <p>비밀번호 변경하기</p>
@@ -57,6 +63,7 @@ const Mypage = () => {
     </ModalLayout>
   );
 };
+
 const PageTitle = styled.h1`
   font-size: 2rem;
   font-weight: 600;
@@ -65,6 +72,12 @@ const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 3rem;
+  margin-bottom: 3rem;
+`;
+const InfoBinder = styled.div`
+  display: flex;
+  width: 20rem;
+  justify-content: space-between;
 `;
 const ToggleTextBtn = styled.div`
   display: flex;

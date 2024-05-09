@@ -3,13 +3,13 @@ export interface LoginType {
   password: string;
 }
 
-export interface infoType {
+export interface InfoType {
   authenticationId: string;
   nickname: string;
   phone: string;
 }
 
-export interface JoinType extends infoType {
+export interface JoinType extends InfoType {
   password: string;
 }
 

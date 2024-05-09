@@ -20,13 +20,13 @@ const CommonBtn = (props: Props) => {
     }
   };
   return (
-    <BtnContainer onClick={handleClick}>
+    <BtnContainer type="button" onClick={handleClick}>
       <p>{props.text}</p>
     </BtnContainer>
   );
 };
 
-const BtnContainer = styled.div`
+const BtnContainer = styled.button`
   display: flex;
   width: 7rem;
   height: 1.5rem;
@@ -34,6 +34,8 @@ const BtnContainer = styled.div`
   align-items: center;
 
   padding: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   background-color: black;
   color: white;
   font-weight: 600;

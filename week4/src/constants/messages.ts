@@ -11,3 +11,9 @@ export const ALERTMSG = {
     notSame: "새 비밀번호가 확인과 다릅니다",
   },
 };
+
+export const INFORMMSG = {
+  pwdFormInfo:
+    "비밀번호 형식은 8자이상, 숫자, 특수문자, 영어 알파벳이 포함되어야 합니다.",
+  phoneNoFormInfo: " 전화번호 형식은 010-****-****입니다.",
+};

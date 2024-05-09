@@ -5,7 +5,7 @@ import InputModule from "../components/InputModule";
 import CommonBtn from "../components/CommonBtn";
 import { memberJoin } from "../apis/memberJoin";
 import { useNavigate } from "react-router-dom";
-import { ALERTMSG } from "../constants/messages";
+import { ALERTMSG, INFORMMSG } from "../constants/messages";
 import { checkPhoneNo } from "../utils/checkPhoneNo";
 import { useRef, useState } from "react";
 import { verifyPwd } from "../utils/verifyPwd";
@@ -102,7 +102,7 @@ const Join = () => {
           inputType="password"
           val={pwd}
           onChange={setPwd}
-          warningMsg="비밀번호 형식은 8자이상, 숫자, 특수문자, 영어 알파벳이 포함되어야 합니다."
+          warningMsg={INFORMMSG.pwdFormInfo}
           warn={true}
           refVal={pwdRef}
         />
@@ -118,7 +118,7 @@ const Join = () => {
           inputType="text"
           val={phone}
           onChange={onPhoneChange}
-          warningMsg="전화번호 형식은 010-****-****입니다."
+          warningMsg={INFORMMSG.phoneNoFormInfo}
           warn={true}
           maxLen={13}
           refVal={phoneRef}

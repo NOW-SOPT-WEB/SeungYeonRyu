@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 type Props = {
@@ -8,40 +8,37 @@ type Props = {
 };
 
 const CommonBtn = (props: Props) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (props.onClick) {
+      props.onClick();
+    }
+
+    if (props.link) {
+      navigate(props.link);
+    }
+  };
   return (
-    <BtnContainer
-      onClick={() => {
-        props.onClick && props.onClick();
-      }}
-    >
-      {props.link ? (
-        <BtnLink to={props.link}>{props.text}</BtnLink>
-      ) : (
-        <p>{props.text}</p>
-      )}
+    <BtnContainer onClick={handleClick}>
+      <p>{props.text}</p>
     </BtnContainer>
   );
 };
-const buttonStyle = `
-display: flex;
-width: 7rem;
-height: 1.5rem;
-justify-content: center;
-align-items: center;
 
-padding: 0.5rem;
-background-color: black;
-color: white;
-font-weight: 600;
-
-border-radius: 3rem;
-`;
 const BtnContainer = styled.div`
-  ${buttonStyle}
-`;
-const BtnLink = styled(Link)`
-  ${buttonStyle}
-  text-decoration: none;
+  display: flex;
+  width: 7rem;
+  height: 1.5rem;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0.5rem;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+
+  border-radius: 3rem;
 `;
 
 export default CommonBtn;

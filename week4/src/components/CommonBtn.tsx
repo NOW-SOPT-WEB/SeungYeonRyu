@@ -15,7 +15,7 @@ const CommonBtn = (props: Props) => {
       }}
     >
       {props.link ? (
-        <StyledLink to={props.link}>{props.text}</StyledLink>
+        <BtnLink to={props.link}>{props.text}</BtnLink>
       ) : (
         <p>{props.text}</p>
       )}
@@ -39,7 +39,7 @@ border-radius: 3rem;
 const BtnContainer = styled.div`
   ${buttonStyle}
 `;
-const StyledLink = styled(Link)`
+const BtnLink = styled(Link)`
   ${buttonStyle}
   text-decoration: none;
 `;

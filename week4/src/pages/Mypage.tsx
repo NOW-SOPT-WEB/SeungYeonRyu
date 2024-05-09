@@ -27,7 +27,6 @@ const Mypage = () => {
   /** 유저 정보 가져오기 */
   const getMemberInfo = async () => {
     if (memberId) {
-      console.log("get member info");
       const info = await memberInfo(memberId);
       setUserInfo(info);
     }

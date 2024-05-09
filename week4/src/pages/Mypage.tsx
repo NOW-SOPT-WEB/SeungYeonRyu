@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { memberInfo } from "../apis/memberInfo";
 import { infoType } from "../types";
 import { useParams } from "react-router-dom";
+import toggleIco from "../assets/icons/toggleIco.svg";
 
 const Mypage = () => {
   const memberId = useParams().id;
@@ -46,7 +47,10 @@ const Mypage = () => {
         <p>{userInfo.nickname}</p>
         <p>{userInfo.phone}</p>
       </InfoWrapper>
-      <p onClick={toggleOpenPwdChange}>비밀번호 변경하기</p>
+      <ToggleTextBtn onClick={toggleOpenPwdChange}>
+        <p>비밀번호 변경하기</p>
+        <ToggleIcon src={toggleIco} $active={openPwdChange} />
+      </ToggleTextBtn>
       {openPwdChange && <ChangePwd />}
 
       <CommonBtn text="홈으로" link={`/main/${memberId}`} />
@@ -62,5 +66,19 @@ const InfoWrapper = styled.div`
   flex-direction: column;
   margin-top: 3rem;
 `;
-
+const ToggleTextBtn = styled.div`
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  padding: 1rem;
+  margin: 1rem;
+  gap: 0.2rem;
+  background-color: #eeeeee;
+  border-radius: 8px;
+`;
+const ToggleIcon = styled.img<{ $active: boolean }>`
+  width: 1rem;
+  height: 1rem;
+  rotate: ${(props) => (props.$active ? "0deg" : "180deg")};
+`;
 export default Mypage;

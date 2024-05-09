@@ -7,7 +7,7 @@ import { memberJoin } from "../apis/memberJoin";
 import { useNavigate } from "react-router-dom";
 import { ALERTMSG } from "../constants/messages";
 import { checkPhoneNo } from "../utils/checkPhoneNo";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { verifyPwd } from "../utils/verifyPwd";
 
 const Join = () => {
@@ -16,6 +16,11 @@ const Join = () => {
   const [pwd, setPwd] = useForm("");
   const [nickName, setNickName] = useForm("");
   const [phone, setPhone] = useState("");
+
+  const idRef = useRef<HTMLInputElement>(null);
+  const pwdRef = useRef<HTMLInputElement>(null);
+  const nickNameRef = useRef<HTMLInputElement>(null);
+  const phoneRef = useRef<HTMLInputElement>(null);
 
   const onPhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPhone(checkPhoneNo(e.target.value));
@@ -37,24 +42,57 @@ const Join = () => {
     }
   };
 
+  const focusRef = (ref: React.RefObject<HTMLInputElement>) => {
+    if (ref.current !== null) {
+      ref.current.focus();
+    }
+  };
+  const changeRefBorderColor = (ref: React.RefObject<HTMLInputElement>) => {
+    if (ref.current !== null) {
+      ref.current.style.setProperty("border-color", "red");
+    }
+  };
+
+  /** focus, border 색 바꾸기 */
+  const warnRef = (ref: React.RefObject<HTMLInputElement>) => {
+    focusRef(ref);
+    changeRefBorderColor(ref);
+  };
+
+  /** focus 해제, border 색 복구 */
+  const resetRefWarn = (ref: React.RefObject<HTMLInputElement>) => {
+    if (ref.current !== null) {
+      ref.current.blur();
+      ref.current.style.setProperty("border-color", "black");
+    }
+  };
   /** 인풋 확인 */
   const checkInput = () => {
     if (id === "") {
       alert(ALERTMSG.id);
+      warnRef(idRef);
       return false;
-    }
+    } else resetRefWarn(idRef);
+
     if (pwd === "") {
       alert(ALERTMSG.pwd);
+      warnRef(pwdRef);
       return false;
-    }
+    } else resetRefWarn(pwdRef);
+
     if (nickName === "") {
       alert(ALERTMSG.nickName);
+      warnRef(nickNameRef);
       return false;
-    }
+    } else resetRefWarn(nickNameRef);
+
     if (phone === "") {
       alert(ALERTMSG.phone);
+      warnRef(phoneRef);
       return false;
-    } else if (!verifyPwd(pwd)) {
+    } else resetRefWarn(phoneRef);
+
+    if (!verifyPwd(pwd)) {
       alert(ALERTMSG.pwdFormat);
       return false;
     }
@@ -64,7 +102,13 @@ const Join = () => {
     <ModalLayout>
       <JoinTitle>회원가입하기</JoinTitle>
       <InputContainer>
-        <InputModule labelTxt="ID" inputType="text" val={id} onChange={setId} />
+        <InputModule
+          labelTxt="ID"
+          inputType="text"
+          val={id}
+          onChange={setId}
+          refVal={idRef}
+        />
         <InputModule
           labelTxt="비밀번호"
           inputType="password"
@@ -72,12 +116,14 @@ const Join = () => {
           onChange={setPwd}
           warningMsg="비밀번호 형식은 8자이상, 숫자, 특수문자, 영어 알파벳이 포함되어야 합니다."
           warn={true}
+          refVal={pwdRef}
         />
         <InputModule
           labelTxt="닉네임"
           inputType="text"
           val={nickName}
           onChange={setNickName}
+          refVal={nickNameRef}
         />
         <InputModule
           labelTxt="전화번호"
@@ -87,6 +133,7 @@ const Join = () => {
           warningMsg="전화번호 형식은 010-****-****입니다."
           warn={true}
           maxLen={13}
+          refVal={phoneRef}
         />
       </InputContainer>
       <BtnWrapper>

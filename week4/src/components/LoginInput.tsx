@@ -24,15 +24,10 @@ const LoginInput = () => {
       };
       const res = await memberLogin(data);
       if (res) {
-        storeMemberId(res.headers.location);
-        if (confirm(res?.data.message)) navigate("/main");
+        if (confirm(res?.data.message))
+          navigate(`/main/${res.headers.location}`);
       }
     }
-  };
-
-  /** localStorage 에 memberId 저장 */
-  const storeMemberId = (id: string) => {
-    localStorage.setItem("memberId", id);
   };
 
   /** 비어있는지 체크 */

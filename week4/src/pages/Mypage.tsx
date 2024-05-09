@@ -5,8 +5,10 @@ import ChangePwd from "../components/ChangePwd";
 import { useEffect, useState } from "react";
 import { memberInfo } from "../apis/memberInfo";
 import { infoType } from "../types";
+import { useParams } from "react-router-dom";
 
 const Mypage = () => {
+  const memberId = useParams().id;
   const dummyInfo = {
     authenticationId: "",
     nickname: "",
@@ -22,7 +24,6 @@ const Mypage = () => {
 
   /** 유저 정보 가져오기 */
   const getMemberInfo = async () => {
-    const memberId = localStorage.getItem("memberId");
     if (memberId) {
       console.log("get member info");
       const info = await memberInfo(memberId);
@@ -48,7 +49,7 @@ const Mypage = () => {
       <p onClick={toggleOpenPwdChange}>비밀번호 변경하기</p>
       {openPwdChange && <ChangePwd />}
 
-      <CommonBtn text="홈으로" link="/main" />
+      <CommonBtn text="홈으로" link={`/main/${memberId}`} />
     </ModalLayout>
   );
 };

@@ -2,8 +2,10 @@ import ReactPlayer from "react-player";
 import mainVideo from "../assets/video/mainVideo.mp4";
 import styled from "styled-components";
 import CommonBtn from "../components/CommonBtn";
+import { useParams } from "react-router-dom";
 
 const MainPage = () => {
+  const memberId = useParams().id;
   return (
     <MainContainer>
       <ReactPlayer
@@ -13,7 +15,7 @@ const MainPage = () => {
         playbackRate={4}
       />
       <BtnWrapper>
-        <CommonBtn text="내 정보" link="/mypage" />
+        <CommonBtn text="내 정보" link={`/mypage/${memberId}`} />
         <CommonBtn text="회원가입" link="/join" />
       </BtnWrapper>
     </MainContainer>

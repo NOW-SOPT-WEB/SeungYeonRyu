@@ -12,3 +12,9 @@ export interface infoType {
 export interface JoinType extends infoType {
   password: string;
 }
+
+export interface ChangePwdType {
+  previousPassword: string;
+  newPassword: string;
+  newPasswordVerification: string;
+}

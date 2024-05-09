@@ -51,7 +51,7 @@ const Mypage = () => {
         <p>비밀번호 변경하기</p>
         <ToggleIcon src={toggleIco} $active={openPwdChange} />
       </ToggleTextBtn>
-      {openPwdChange && <ChangePwd />}
+      {openPwdChange && <ChangePwd memberId={memberId ? memberId : ""} />}
 
       <CommonBtn text="홈으로" link={`/main/${memberId}`} />
     </ModalLayout>

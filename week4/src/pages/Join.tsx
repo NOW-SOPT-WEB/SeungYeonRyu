@@ -5,7 +5,12 @@ import InputModule from "../components/InputModule";
 import CommonBtn from "../components/CommonBtn";
 import { memberJoin } from "../apis/memberJoin";
 import { useNavigate } from "react-router-dom";
-import { ALERTMSG, INFORMMSG } from "../constants/messages";
+import {
+  ALERTMSG,
+  BTNTXT,
+  INFORMATION,
+  INFORMMSG,
+} from "../constants/messages";
 import { checkPhoneNo } from "../utils/checkPhoneNo";
 import { useRef, useState } from "react";
 import { verifyPwd } from "../utils/verifyPwd";
@@ -91,14 +96,14 @@ const Join = () => {
       <JoinTitle>회원가입하기</JoinTitle>
       <InputContainer>
         <InputModule
-          labelTxt="ID"
+          labelTxt={INFORMATION.id}
           inputType="text"
           val={id}
           onChange={setId}
           refVal={idRef}
         />
         <InputModule
-          labelTxt="비밀번호"
+          labelTxt={INFORMATION.pwd}
           inputType="password"
           val={pwd}
           onChange={setPwd}
@@ -107,14 +112,14 @@ const Join = () => {
           refVal={pwdRef}
         />
         <InputModule
-          labelTxt="닉네임"
+          labelTxt={INFORMATION.nickname}
           inputType="text"
           val={nickName}
           onChange={setNickName}
           refVal={nickNameRef}
         />
         <InputModule
-          labelTxt="전화번호"
+          labelTxt={INFORMATION.phone}
           inputType="text"
           val={phone}
           onChange={onPhoneChange}
@@ -125,8 +130,8 @@ const Join = () => {
         />
       </InputContainer>
       <BtnWrapper>
-        <CommonBtn text="회원가입" onClick={handleJoin} />
-        <CommonBtn text="뒤로가기" link="/" />
+        <CommonBtn text={BTNTXT.join} onClick={handleJoin} />
+        <CommonBtn text={BTNTXT.back} link="/" />
       </BtnWrapper>
     </ModalLayout>
   );

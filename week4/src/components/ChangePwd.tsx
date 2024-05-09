@@ -5,7 +5,7 @@ import CommonBtn from "./CommonBtn";
 import { memberChangePwd } from "../apis/memberChangePwd";
 import { ChangePwdType } from "../types";
 import { useNavigate } from "react-router-dom";
-import { ALERTMSG } from "../constants/messages";
+import { ALERTMSG, BTNTXT, PWDCHANGELABEL } from "../constants/messages";
 
 type Props = {
   memberId: string;
@@ -61,25 +61,25 @@ const ChangePwd = (props: Props) => {
     <ChangePwdContainer>
       <InputContainer>
         <InputModule
-          labelTxt="기존 비밀번호"
+          labelTxt={PWDCHANGELABEL.prevPwd}
           inputType="password"
           val={prevPwd}
           onChange={setPrevPwd}
         />
         <InputModule
-          labelTxt="새로운 비밀번호"
+          labelTxt={PWDCHANGELABEL.newPwd}
           inputType="password"
           val={newPwd}
           onChange={setNewPwd}
         />
         <InputModule
-          labelTxt="비밀번호 확인"
+          labelTxt={PWDCHANGELABEL.checkNewPwd}
           inputType="password"
           val={checkNewPwd}
           onChange={setCheckNewPwd}
         />
       </InputContainer>
-      <CommonBtn text="비밀번호 변경" onClick={handlePwdChange} />
+      <CommonBtn text={BTNTXT.changePwd} onClick={handlePwdChange} />
     </ChangePwdContainer>
   );
 };

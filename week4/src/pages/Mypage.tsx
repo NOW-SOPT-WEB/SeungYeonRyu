@@ -4,9 +4,10 @@ import CommonBtn from "../components/CommonBtn";
 import ChangePwd from "../components/ChangePwd";
 import { useEffect, useState } from "react";
 import { memberInfo } from "../apis/memberInfo";
-import { infoType } from "../types";
+import { InfoType } from "../types";
 import { useParams } from "react-router-dom";
 import toggleIco from "../assets/icons/toggleIco.svg";
+import { BTNTXT, INFORMATION } from "../constants/messages";
 
 const Mypage = () => {
   const memberId = useParams().id;
@@ -15,7 +16,7 @@ const Mypage = () => {
     nickname: "",
     phone: "",
   };
-  const [userInfo, setUserInfo] = useState<infoType>(dummyInfo);
+  const [userInfo, setUserInfo] = useState<InfoType>(dummyInfo);
 
   // 비밀번호 변경하기 토글
   const [openPwdChange, setOpenPwdChange] = useState(false);
@@ -41,25 +42,25 @@ const Mypage = () => {
       <PageTitle>마이페이지</PageTitle>
       <InfoWrapper>
         <InfoBinder>
-          <p>id</p>
+          <p>{INFORMATION.id}</p>
           <p>{userInfo.authenticationId}</p>
         </InfoBinder>
         <InfoBinder>
-          <p>닉네임</p>
+          <p>{INFORMATION.nickname}</p>
           <p>{userInfo.nickname}</p>
         </InfoBinder>
         <InfoBinder>
-          <p>전화번호</p>
+          <p>{INFORMATION.phone}</p>
           <p>{userInfo.phone}</p>
         </InfoBinder>
       </InfoWrapper>
       <ToggleTextBtn onClick={toggleOpenPwdChange}>
-        <p>비밀번호 변경하기</p>
+        <p>{BTNTXT.changePwd}</p>
         <ToggleIcon src={toggleIco} $active={openPwdChange} />
       </ToggleTextBtn>
       {openPwdChange && <ChangePwd memberId={memberId ? memberId : ""} />}
 
-      <CommonBtn text="홈으로" link={`/main/${memberId}`} />
+      <CommonBtn text={BTNTXT.home} link={`/main/${memberId}`} />
     </ModalLayout>
   );
 };

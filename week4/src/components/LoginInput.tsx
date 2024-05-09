@@ -5,6 +5,7 @@ import CommonBtn from "./CommonBtn";
 import { useEffect, useState } from "react";
 import { memberLogin } from "../apis/memberLogin";
 import { useNavigate } from "react-router-dom";
+import { ALERTMSG, BTNTXT, INFORMATION } from "../constants/messages";
 
 const LoginInput = () => {
   const navigate = useNavigate();
@@ -54,25 +55,25 @@ const LoginInput = () => {
     <>
       <LoginInputContainer>
         <InputModule
-          labelTxt="ID"
+          labelTxt={INFORMATION.id}
           inputType="text"
           val={id}
           onChange={setId}
-          warningMsg="id를 입력해주세요"
+          warningMsg={ALERTMSG.id}
           warn={idWarn}
         />
         <InputModule
-          labelTxt="PWD"
+          labelTxt={INFORMATION.pwd}
           inputType="password"
           val={pwd}
           onChange={setPwd}
-          warningMsg="비밀번호를 입력해주세요"
+          warningMsg={ALERTMSG.pwd}
           warn={pwdWarn}
         />
       </LoginInputContainer>
       <LoginBtnWrapper>
-        <CommonBtn text="로그인" onClick={handleLogin} />
-        <CommonBtn text="회원가입" link="/join" />
+        <CommonBtn text={BTNTXT.login} onClick={handleLogin} />
+        <CommonBtn text={BTNTXT.join} link="/join" />
       </LoginBtnWrapper>
     </>
   );

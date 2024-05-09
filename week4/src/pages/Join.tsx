@@ -42,21 +42,12 @@ const Join = () => {
     }
   };
 
-  const focusRef = (ref: React.RefObject<HTMLInputElement>) => {
-    if (ref.current !== null) {
-      ref.current.focus();
-    }
-  };
-  const changeRefBorderColor = (ref: React.RefObject<HTMLInputElement>) => {
-    if (ref.current !== null) {
-      ref.current.style.setProperty("border-color", "red");
-    }
-  };
-
   /** focus, border 색 바꾸기 */
   const warnRef = (ref: React.RefObject<HTMLInputElement>) => {
-    focusRef(ref);
-    changeRefBorderColor(ref);
+    if (ref.current) {
+      ref.current.focus();
+      ref.current.style.setProperty("border-color", "red");
+    }
   };
 
   /** focus 해제, border 색 복구 */
@@ -66,38 +57,35 @@ const Join = () => {
       ref.current.style.setProperty("border-color", "black");
     }
   };
+
   /** 인풋 확인 */
   const checkInput = () => {
-    if (id === "") {
-      alert(ALERTMSG.id);
-      warnRef(idRef);
-      return false;
-    } else resetRefWarn(idRef);
+    const fields = [
+      { field: id, ref: idRef, msg: ALERTMSG.id },
+      { field: pwd, ref: pwdRef, msg: ALERTMSG.pwd },
+      { field: nickName, ref: nickNameRef, msg: ALERTMSG.nickName },
+      { field: phone, ref: phoneRef, msg: ALERTMSG.phone },
+    ];
 
-    if (pwd === "") {
-      alert(ALERTMSG.pwd);
-      warnRef(pwdRef);
-      return false;
-    } else resetRefWarn(pwdRef);
+    for (const { field, ref, msg } of fields) {
+      if (field === "") {
+        alert(msg);
+        warnRef(ref);
+        return false;
+      } else {
+        resetRefWarn(ref);
+      }
+    }
 
-    if (nickName === "") {
-      alert(ALERTMSG.nickName);
-      warnRef(nickNameRef);
-      return false;
-    } else resetRefWarn(nickNameRef);
-
-    if (phone === "") {
-      alert(ALERTMSG.phone);
-      warnRef(phoneRef);
-      return false;
-    } else resetRefWarn(phoneRef);
-
+    // 비밀번호 형식 검사
     if (!verifyPwd(pwd)) {
       alert(ALERTMSG.pwdFormat);
       return false;
     }
+
     return true;
   };
+
   return (
     <ModalLayout>
       <JoinTitle>회원가입하기</JoinTitle>

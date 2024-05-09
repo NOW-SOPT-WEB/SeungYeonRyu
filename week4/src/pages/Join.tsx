@@ -14,6 +14,7 @@ import {
 import { checkPhoneNo } from "../utils/checkPhoneNo";
 import { useRef, useState } from "react";
 import { verifyPwd } from "../utils/verifyPwd";
+import { JoinType } from "../types";
 
 const Join = () => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const Join = () => {
 
   /** 회원가입 */
   const handleJoin = async () => {
-    const data = {
+    const data: JoinType = {
       authenticationId: id,
       password: pwd,
       nickname: nickName,

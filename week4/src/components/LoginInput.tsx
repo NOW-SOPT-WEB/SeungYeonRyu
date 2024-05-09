@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { memberLogin } from "../apis/memberLogin";
 import { useNavigate } from "react-router-dom";
 import { ALERTMSG, BTNTXT, INFORMATION } from "../constants/messages";
+import { LoginType } from "../types";
 
 const LoginInput = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const LoginInput = () => {
   /** 로그인 */
   const handleLogin = async () => {
     if (checkValid()) {
-      const data = {
+      const data: LoginType = {
         authenticationId: id,
         password: pwd,
       };

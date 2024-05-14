@@ -7,7 +7,7 @@ const Login = () => {
   return (
     <ModalLayout>
       <LoginTitle>Login</LoginTitle>
-      <LoginImage src={LoginImg} />
+      <LoginImage src={LoginImg} alt="login react" />
       <LoginInput />
     </ModalLayout>
   );

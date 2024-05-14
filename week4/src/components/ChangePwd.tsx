@@ -92,8 +92,7 @@ const ChangePwdContainer = styled.div`
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+  margin: 3rem 0;
   gap: 2rem;
 `;
 export default ChangePwd;
